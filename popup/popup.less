@@ -1,0 +1,84 @@
+@import '../style/common.less';
+
+.main-body {
+  width: 450px;
+  padding: 15px;
+}
+
+.search-form {
+  display: table;
+  width: 100%;
+}
+
+.search-button-wrapper,
+.search-input-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.search-input-wrapper {
+  overflow: hidden;
+}
+
+.search-button-wrapper {
+  width: 30px
+}
+
+.search-input,
+.search-button {
+  height: 30px;
+}
+
+.search-input {
+  font-size: 12px;
+
+  &::-webkit-input-placeholder {
+    font-family: @font-family-sans-serif;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: #66afe9;
+  }
+
+  width: 100%;
+  padding: 4px 10px;
+
+  border: 1px solid #ddd;
+  border-right: none;
+  font-family: @font-family-monospace;
+}
+
+.search-button {
+  width: 30px;
+  background: #66afe9;
+  color: #fff;
+  border: none;
+  padding: 0;
+}
+
+.markets {
+  margin-top: 15px;
+}
+
+.markets-table {
+  width: 100%;
+
+  th, td {
+    border-bottom: 1px solid #efefef;
+    padding: 5px 10px;
+  }
+
+  th {
+    font-weight: 400;
+  }
+
+  td {
+    font-weight: 300;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: 10px;
+}
