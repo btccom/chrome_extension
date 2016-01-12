@@ -68,33 +68,3 @@
 		/* from http://fonts.gstatic.com/l/font?kit=_YZOZaQ9UBZzaxiLBLcgZg&skey=a0a0114a1dcab3ac#Roboto */
 		url('/fonts/Roboto_400.svg#Roboto') format('svg');
 }
-
-@font-face {
-	font-family: 'Roboto Condensed';
-	font-style: normal;
-	font-weight: 400;
-	src:
-	local('Roboto Condensed'),
-	local('RobotoCondensed-Regular'),
-	/* from http://fonts.gstatic.com/s/robotocondensed/v13/Zd2E9abXLFGSr9G3YK2MsFzqCfRpIA3W6ypxnPISCPA.woff */
-	url('/fonts/Roboto_Condensed_400.woff') format('woff'),
-	/* from http://fonts.gstatic.com/s/robotocondensed/v13/Zd2E9abXLFGSr9G3YK2MsDR-eWpsHSw83BRsAQElGgc.ttf */
-	url('/fonts/Roboto_Condensed_400.ttf') format('truetype'),
-	/* from http://fonts.gstatic.com/l/font?kit=Zd2E9abXLFGSr9G3YK2MsM9XqQMESZbwKrSTBefVM6U&skey=9986ecffddb755ab#RobotoCondensed */
-	url('/fonts/Roboto_Condensed_400.svg#RobotoCondensed') format('svg');
-}
-
-@font-face {
-	font-family: 'Lato';
-	font-style: normal;
-	font-weight: 100;
-	src:
-	local('Lato Hairline'),
-	local('Lato-Hairline'),
-		/* from  */
-	url('/fonts/Lato_100.woff') format('woff'),
-		/* from http://fonts.gstatic.com/s/lato/v11/zJY4gsxBiSo5L7tNutxFNg.ttf */
-	url('/fonts/Lato_100.ttf') format('truetype'),
-		/* from http://fonts.gstatic.com/l/font?kit=1zdx8ZyEBSORSnTlZpEGKA&skey=cfa1ba7b04a1ba34#Lato */
-	url('/fonts/Lato_100.svg#Lato') format('svg');
-}
