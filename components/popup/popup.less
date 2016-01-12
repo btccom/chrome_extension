@@ -1,7 +1,7 @@
 @import '../../style/common.less';
 
 .main-body {
-  width: 450px;
+  width: 500px;
   padding: 15px;
 }
 
@@ -75,6 +75,55 @@
 
   td {
     font-weight: 300;
+  }
+
+  .price-indicator-td {
+    padding: 0;
+  }
+}
+
+@keyframes fadeout-red {
+  from {
+    background: rgba(241, 79, 90, .5);
+  }
+  to {
+    background: #fff;
+  }
+}
+
+@keyframes fadeout-green {
+  from {
+    background: rgba(25, 197, 95, .5);
+  }
+  to {
+    background: #fff;
+  }
+}
+
+.price-indicator {
+  background: #fff;
+  line-height: 30px;
+
+  &.active-green {
+    -webkit-animation: fadeout-green 1s ease-out;
+    .glyphicon {
+      color: green;
+      visibility: visible;
+    }
+  }
+
+  &.active-red {
+    -webkit-animation: fadeout-red 1s ease-out;
+    .glyphicon {
+      color: red;
+      visibility: visible;
+    }
+  }
+
+  .glyphicon {
+    font-size: 12px;
+    margin-right: 3px;
+    visibility: hidden;
   }
 }
 

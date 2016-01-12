@@ -3,34 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Popup</title>
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../build/popup.bundle.js"></script>
     <style>
         [v-cloak] {
             display: none;
-        }
-
-        .up-transition,
-        .down-transition {
-            transition: all 1s;
-            background: #fff;
-        }
-
-        .up-leave,
-        .down-leave,
-        .static-leave {
-            transition: none;
-        }
-
-        .up-enter {
-            background: red;
-            color: #fff;
-        }
-
-        .down-enter {
-            background: green;
-            color: #fff;
         }
     </style>
 </head>
@@ -60,24 +35,24 @@
                         <td class="text-right" title="24 小时最低">最低</td>
                         <th class="text-right" title="24 小时成交量">成交量</th>
                     </tr>
-                    <tr v-for="i in markets" track-by="symbol">
-                        <td class="text-right">{{ i.platform_zh_cn }}</td>
-                        <td class="text-right">
-                            {{ i.last / 1e3 | format 2}}
+                    <tr v-for="s in symbols" track-by="symbol">
+                        <td class="text-right">{{ s.platform_zh_cn }}</td>
+                        <td class="text-right price-indicator-td">
+                            <price-indicator :v="markets[s.symbol].last" :rates="rates" :symbol="s" :options="options"></price-indicator>
                         </td>
-                        <td class="text-right">{{ i.high / 1e3 | format 2}}</td>
-                        <td class="text-right">{{ i.low / 1e3 | format 2}}</td>
-                        <td class="text-right">{{ i.vol / 1e8 | format 0 }}</td>
+                        <td class="text-right">{{ markets[s.symbol].high / 1e3 | format 2}}</td>
+                        <td class="text-right">{{ markets[s.symbol].low / 1e3 | format 2}}</td>
+                        <td class="text-right">{{ markets[s.symbol].vol / 1e8 | format 0 }}</td>
                     </tr>
                 </table>
             </div>
 
             <footer class="footer">
-                <a href="https://chain.btc.com" target="_blank"><img src="../images/logo@2x.png" alt="BTC.COM" width="63" height="12"></a>
+                <a href="https://chain.btc.com" target="_blank"><img src="/images/logo@2x.png" alt="BTC.COM" width="63" height="12"></a>
             </footer>
         </div>
     </div>
 </div>
-
+<script src="../../build/popup.bundle.js"></script>
 </body>
 </html>
