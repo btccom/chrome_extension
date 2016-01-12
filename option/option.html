@@ -33,14 +33,34 @@
                     </div>
                 </div>
                 <div class="setting-section">
+                    <h2>币种</h2>
+                    <div class="setting-group">
+                        <div class="setting-row">
+                            <label>
+                                <input type="radio" name="priceCurrency" value="USD" v-model="options.priceCurrency"> 优先使用美元
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <label>
+                                <input type="radio" name="priceCurrency" value="CNY" v-model="options.priceCurrency"> 优先使用人民币
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-section">
                     <h2>价格</h2>
                     <div class="setting-group">
-                        <label>
-                            <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.priceChangeColor"> 红涨绿跌
-                        </label>
-                        <label style="margin-left: 20px;">
-                            <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.priceChangeColor"> 绿涨红跌
-                        </label>
+                        <div class="setting-row">
+                            <label>
+                                <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.priceChangeColor"> 红涨绿跌
+                            </label>
+                        </div>
+                        <div class="setting-row">
+                            <label>
+                                <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.priceChangeColor"> 绿涨红跌
+                            </label>
+                        </div>
                     </div>
                     <div class="setting-group">
                         <label>
