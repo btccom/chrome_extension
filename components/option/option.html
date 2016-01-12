@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>BTC.COM Extension Settings</title>
-    <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../build/option.bundle.js"></script>
     <style>
         [v-cloak] {
             display: none;
@@ -24,7 +21,7 @@
                     <h2>查询</h2>
                     <div class="setting-group">
                         <label>
-                            <input type="checkbox" v-model="options.queryDropdown">
+                            <input type="checkbox" v-model="options.query.dropdown.enable">
                             <span>启用哈希识别查询</span>
                         </label>
                         <div class="help-text">
@@ -37,12 +34,12 @@
                     <div class="setting-group">
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceCurrency" value="USD" v-model="options.priceCurrency"> 优先使用美元
+                                <input type="radio" name="priceCurrency" value="USD" v-model="options.price.preferCurrency"> 优先使用美元
                             </label>
                         </div>
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceCurrency" value="CNY" v-model="options.priceCurrency"> 优先使用人民币
+                                <input type="radio" name="priceCurrency" value="CNY" v-model="options.price.preferCurrency"> 优先使用人民币
                             </label>
                         </div>
                     </div>
@@ -53,22 +50,22 @@
                     <div class="setting-group">
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.priceChangeColor"> 红涨绿跌
+                                <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.price.changeColor"> 红涨绿跌
                             </label>
                         </div>
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.priceChangeColor"> 绿涨红跌
+                                <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.price.changeColor"> 绿涨红跌
                             </label>
                         </div>
                     </div>
                     <div class="setting-group">
                         <label>
-                            <input type="checkbox" class="settings-checkbox" name="priceBadge" v-model="options.priceBadge.enable">
+                            <input type="checkbox" class="settings-checkbox" v-model="options.price.badge.enable">
                             <span>启用价格角标</span>
                         </label>
-                        <select v-if="options.priceBadge.enable" v-model="options.priceBadge.sourceSymbol" style="margin-left: 10px;">
-                            <option :value="s.symbol" v-for="s in symbols" track-by="symbol">{{ s.platform_zh_cn }} - {{ s.coin_type }}</option>
+                        <select v-if="options.price.badge.enable" v-model="options.price.badge.source" style="margin-left: 10px;">
+                            <option :value="s.symbol" v-for="s in symbols" track-by="symbol">{{ s.platform_zh_cn }}</option>
                         </select>
                         <div class="help-text">
                             比特币的实时价格将会显示在浏览器右上角。
@@ -85,5 +82,7 @@
             </form>
         </div>
     </div>
+
+    <script src="../../build/option.bundle.js"></script>
 </body>
 </html>

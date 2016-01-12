@@ -1,21 +1,23 @@
 require('./option.less');
+require('../../lib/bootstrap');
 const _ = require('lodash');
+const Vue = require('vue');
+const storage = require('../../lib/storage');
 
-$(function() {
-    chrome.storage.local.get(['options', 'symbols'], ({options, symbols}) => {
+Promise.join(storage.getOptions(), storage.getSymbolAndRates())
+    .then(([options, { symbols }]) => {
         new Vue({
             el: '.settings',
             data: {
                 options,
-                symbols: symbols.filter(s => s.coin_type == 'BTC')
+                symbols
             },
             methods: {
                 submit(){
-                    chrome.storage.local.set({
-                        options: this.$data.options
+                    return storage.set({
+                        options: this.options
                     });
                 }
             }
-        })
+        });
     });
-});
