@@ -1,5 +1,7 @@
 require('./popup.less');
 
+require('../../lib/bootstrap');
+
 const _ = require('lodash');
 
 $(function() {

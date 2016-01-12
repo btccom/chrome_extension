@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        option: './option/option.js',
-        background: './background',
-        popup: './popup/popup.js'
+        option: './components/option/option.js',
+        background: './components/background/background.js',
+        popup: './components/popup/popup.js'
     },
     output: {
         path: path.join(__dirname, 'build'),
