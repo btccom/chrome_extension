@@ -3,6 +3,7 @@ require('./popup.less');
 
 const _ = require('lodash');
 const Vue = require('vue');
+const moment = require('moment');
 const constants = require('../../lib/constants');
 const config = require('../../config');
 const utils = require('../../lib/utils');
@@ -13,6 +14,10 @@ Vue.filter('format', (v, size, withSign) => {
     var num = v.toFixed(size);
     if (withSign && v >= 0) num = '+' + num;
     return num;
+});
+
+Vue.filter('timestampFormat', (v, format = 'YYYY/MM/DD HH:mm:ss') => {
+    return moment(v * 1000).format(format);
 });
 
 const priceIndicator = {
@@ -72,7 +77,10 @@ const priceIndicator = {
 new Vue({
     el: '.container',
     data: {
-        markets: {},
+        markets: {
+            data: {},
+            updatedAt: 0
+        },
         symbols: [],
         rates: {},
         options: {},
@@ -94,7 +102,7 @@ new Vue({
         chrome.storage.onChanged.addListener(changes => {
             if (changes.markets) {
                 console.log('new markets', changes.markets.newValue.data);
-                _.extend(this.markets, changes.markets.newValue.data);
+                _.extend(this.markets, changes.markets.newValue);
             }
         });
 
@@ -107,7 +115,7 @@ new Vue({
 
         return Promise.join(storage.getMarkets(), storage.getSymbolAndRates(), storage.getOptions())
             .then(([ markets, { symbols, rates }, options ]) => {
-                this.markets = markets.data;
+                this.markets = markets;
                 this.symbols = symbols;
                 this.rates = rates;
                 this.options = options;
