@@ -12,7 +12,7 @@
 <body>
 
 <div class="main-body">
-    <div class="container">
+    <div class="container" v-cloak>
         <div class="row">
             <div class="search">
                 <form method="GET" action="https://chain.btc.com/search" class="search-form" target="_blank">
@@ -26,7 +26,13 @@
                 </form>
             </div>
 
-            <div class="markets" v-cloak>
+            <div class="update-notification text-info bg-info" v-if="needUpdate">
+                <a href="https://chain.btc.com/en/applications/extension" :title="latestVersion.release_note" target="_blank">
+                    检测到新版本（{{ latestVersion.version }}），点此升级。
+                </a>
+            </div>
+
+            <div class="markets">
                 <table class="markets-table">
                     <tr>
                         <th class="text-right">市场</th>

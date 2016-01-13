@@ -70,12 +70,17 @@ const priceIndicator = {
 };
 
 new Vue({
-    el: '.markets',
+    el: '.container',
     data: {
         markets: {},
         symbols: [],
         rates: {},
-        options: {}
+        options: {},
+        needUpdate: false,
+        latestVersion: {
+            version: '',
+            release_note: ''
+        }
     },
     filter: {
 
@@ -83,7 +88,7 @@ new Vue({
     components: {
         priceIndicator
     },
-    methods: {
+    computed: {
     },
     ready() {
         chrome.storage.onChanged.addListener(changes => {
@@ -91,6 +96,13 @@ new Vue({
                 console.log('new markets', changes.markets.newValue.data);
                 _.extend(this.markets, changes.markets.newValue.data);
             }
+        });
+
+        storage.latestVersion().then(latestVersion => {
+            this.latestVersion = latestVersion;
+            const localVersion = chrome.runtime.getManifest().version;
+            console.log('localVersion = %s, latestVeresion = %s', localVersion, latestVersion.version);
+            this.needUpdate = localVersion !== latestVersion.version;
         });
 
         return Promise.join(storage.getMarkets(), storage.getSymbolAndRates(), storage.getOptions())
