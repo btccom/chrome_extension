@@ -1,5 +1,5 @@
-require('./popup.less');
 require('../../lib/bootstrap');
+require('./popup.less');
 
 const _ = require('lodash');
 const Vue = require('vue');

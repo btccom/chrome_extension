@@ -12,9 +12,19 @@ module.exports = {
     },
     module: {
         loaders: [
+            { test: /\.json$/, loader: "json"},
             { test: /\.css$/, loader: "style!css" },
             { test: /\.less$/, loader: "style!css!less"},
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader", presets: ['stage-0', 'es2015']}
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                presets: ['stage-0', 'es2015']
+            },
+            {
+                test: /\.(png|jpg|gif)/,
+                loader: 'url?limit=10000'
+            }
         ]
     },
     devtool: '#cheap-source-map'

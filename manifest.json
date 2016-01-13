@@ -13,7 +13,8 @@
     "storage",
     "alarms",
 
-    "*://*/"
+    "http://*/*",
+    "https://*/*"
   ],
 
   "background": {
