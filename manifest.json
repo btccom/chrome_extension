@@ -18,7 +18,7 @@
 
   "background": {
     "scripts": [ "build/background.bundle.js" ],
-    "persistent": false
+    "persistent": true
   },
 
   "options_page": "components/option/option.html"
