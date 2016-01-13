@@ -44,8 +44,8 @@
       ],
       "js": [
         "components/lookup/jquery.min.js",
-        "components/lookup/look.js",
         "components/lookup/bitcore.min.js",
+        "build/lookup.bundle.js",
         "components/lookup/tool.js"
       ]
     }

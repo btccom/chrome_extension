@@ -4,7 +4,8 @@ module.exports = {
     entry: {
         option: './components/option/option.js',
         background: './components/background/background.js',
-        popup: './components/popup/popup.js'
+        popup: './components/popup/popup.js',
+        lookup: './components/lookup/look.js'
     },
     output: {
         path: path.join(__dirname, 'build'),
