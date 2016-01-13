@@ -46,9 +46,9 @@
                         <td class="text-right price-indicator-td">
                             <price-indicator :v="markets.data[s.symbol].last" :rates="rates" :symbol="s" :options="options"></price-indicator>
                         </td>
-                        <td class="text-right">{{ markets.data[s.symbol].high / 1e3 | format 2}}</td>
-                        <td class="text-right">{{ markets.data[s.symbol].low / 1e3 | format 2}}</td>
-                        <td class="text-right">{{ markets.data[s.symbol].vol / 1e8 | format 0 }}</td>
+                        <td class="text-right">{{ markets.data[s.symbol].high / 1e3 | numberFormat 2}}</td>
+                        <td class="text-right">{{ markets.data[s.symbol].low / 1e3 | numberFormat 2}}</td>
+                        <td class="text-right">{{ markets.data[s.symbol].vol / 1e8 | numberFormat 0 }}</td>
                     </tr>
                 </table>
                 <div class="text-right markets-lastupdate">最后更新于 {{ markets.updatedAt | timestampFormat }}</div>

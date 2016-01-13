@@ -9,11 +9,18 @@ const config = require('../../config');
 const utils = require('../../lib/utils');
 const storage = require('../../lib/storage');
 
-Vue.filter('format', (v, size, withSign) => {
-    if (withSign == null) withSign = false;
-    var num = v.toFixed(size);
-    if (withSign && v >= 0) num = '+' + num;
-    return num;
+Vue.filter('numberFormat', (number, decimals, decPoint, thousandsSep) => {
+    decimals = isNaN(decimals) ? 2 : Math.abs(decimals);
+    decPoint = (decPoint === undefined) ? '.' : decPoint;
+    thousandsSep = (thousandsSep === undefined) ? ',' : thousandsSep;
+
+    var sign = number < 0 ? '-' : '';
+    number = Math.abs(+number || 0);
+
+    var intPart = parseInt(number.toFixed(decimals), 10) + '';
+    var j = intPart.length > 3 ? intPart.length % 3 : 0;
+
+    return sign + (j ? intPart.substr(0, j) + thousandsSep : '') + intPart.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + thousandsSep) + (decimals ? decPoint + Math.abs(number - intPart).toFixed(decimals).slice(2) : '');
 });
 
 Vue.filter('timestampFormat', (v, format = 'YYYY/MM/DD HH:mm:ss') => {
@@ -35,9 +42,9 @@ const priceIndicator = {
     <i class="glyphicon glyphicon-arrow-up" v-show="change > 0"></i>
     <i class="glyphicon glyphicon-arrow-right" v-show="change == 0"></i>
     <i class="glyphicon glyphicon-arrow-down" v-show="change < 0"></i>
-    {{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(v / 1e3, symbol.currency_type, options.price.preferCurrency) | format 2 }}
+    {{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(v / 1e3, symbol.currency_type, options.price.preferCurrency) | numberFormat 2 }}
     /
-    {{ options.price.preferCurrency == 'USD' ? '¥' : '$' }} {{ convert(v / 1e3, symbol.currency_type, options.price.preferCurrency == 'USD' ? 'CNY' : 'USD') | format 2 }}
+    {{ options.price.preferCurrency == 'USD' ? '¥' : '$' }} {{ convert(v / 1e3, symbol.currency_type, options.price.preferCurrency == 'USD' ? 'CNY' : 'USD') | numberFormat 2 }}
 </div>
 `,
     methods: {
