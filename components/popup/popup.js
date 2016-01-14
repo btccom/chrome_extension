@@ -98,8 +98,7 @@ new Vue({
         options: {},
         needUpdate: false,
         latestVersion: {
-            version: '',
-            release_note: ''
+            version: ''
         }
     },
     filters: {
