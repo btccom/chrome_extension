@@ -2,74 +2,76 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>BTC.COM Extension Settings</title>
+    <title data-i18n="setting_title"></title>
     <style>
         [v-cloak] {
             display: none;
         }
     </style>
+
+    <script src="/components/i18n.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="page-header">
-                <h1>扩展设置</h1>
+                <h1 data-i18n="setting_title"></h1>
             </div>
 
             <form class="settings" @change="submit" v-cloak>
                 <div class="setting-section">
-                    <h2>查询</h2>
+                    <h2 data-i18n="setting_section_query"></h2>
                     <div class="setting-group">
                         <label>
                             <input type="checkbox" v-model="options.query.dropdown.enable">
-                            <span>启用哈希识别查询</span>
+                            <span data-i18n="setting_section_query_dropdown_enable"></span>
                         </label>
-                        <div class="help-text">
-                            在您选中有效的哈希文字，或鼠标指向包含哈希的链接时，自动弹出查询窗口。
-                        </div>
+                        <div class="help-text" data-i18n="setting_section_query_dropdown_enable_helptext"></div>
                     </div>
                 </div>
                 <div class="setting-section">
-                    <h2>币种</h2>
+                    <h2 data-i18n="setting_section_currency"></h2>
                     <div class="setting-group">
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceCurrency" value="USD" v-model="options.price.preferCurrency"> 优先使用美元
+                                <input type="radio" name="priceCurrency" value="USD" v-model="options.price.preferCurrency">
+                                <span data-i18n="setting_section_currency_prefer_usd"></span>
                             </label>
                         </div>
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceCurrency" value="CNY" v-model="options.price.preferCurrency"> 优先使用人民币
+                                <input type="radio" name="priceCurrency" value="CNY" v-model="options.price.preferCurrency">
+                                <span data-i18n="setting_section_currency_prefer_cny"></span>
                             </label>
                         </div>
                     </div>
                 </div>
 
                 <div class="setting-section">
-                    <h2>价格</h2>
+                    <h2 data-i18n="setting_section_price"></h2>
                     <div class="setting-group">
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.price.changeColor"> 红涨绿跌
+                                <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.price.changeColor">
+                                <span data-i18n="setting_section_price_RED_UP_GREEN_DOWN"></span>
                             </label>
                         </div>
                         <div class="setting-row">
                             <label>
-                                <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.price.changeColor"> 绿涨红跌
+                                <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.price.changeColor">
+                                <span data-i18n="setting_section_price_RED_DOWN_GREEN_UP"></span>
                             </label>
                         </div>
                     </div>
                     <div class="setting-group">
                         <label>
                             <input type="checkbox" class="settings-checkbox" v-model="options.price.badge.enable">
-                            <span>启用价格角标</span>
+                            <span data-i18n="setting_section_price_browserbadge_enable"></span>
                         </label>
                         <select v-if="options.price.badge.enable" v-model="options.price.badge.source" style="margin-left: 10px;">
                             <option :value="s.symbol" v-for="s in symbols" track-by="symbol">{{ s.platform_zh_cn }}</option>
                         </select>
-                        <div class="help-text">
-                            比特币的实时价格将会显示在浏览器右上角。
-                        </div>
+                        <div class="help-text" data-i18n="setting_section_price_browserbadge_enable_helptext"></div>
                     </div>
                 </div>
                 <!--<div class="setting-section">-->

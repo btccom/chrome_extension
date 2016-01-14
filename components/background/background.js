@@ -84,8 +84,9 @@ chrome.storage.onChanged.addListener(changes => {
                 const open = info.open;
 
                 return storage.getSymbolAndRates()
-                    .then(({symbols}) => {
+                    .then(({symbols, rates}) => {
                         return utils.convertCurrency(
+                            rates,
                             _.find(symbols, e => e.symbol == opt.price.badge.source).currency_type,
                             opt.price.preferCurrency,
                             last / 1e3);

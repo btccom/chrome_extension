@@ -1,8 +1,72 @@
 {
-  "extName": {
+  "ext_name": {
     "message": "BTC.COM Chrome 扩展"
   },
-  "extDesc": {
+  "ext_desc": {
     "message": "本插件提供比特币区块链数据的快捷查询功能，由 BTC.COM 团队出品。"
+  },
+  "setting_title": {
+    "message": "BTC.COM 设置"
+  },
+  "setting_section_query": {
+    "message": "BTC.COM 查询"
+  },
+  "setting_section_query_dropdown_enable": {
+    "message": "启用哈希识别查询"
+  },
+  "setting_section_query_dropdown_enable_helptext": {
+    "message": "在您选中有效的哈希文字，或鼠标指向包含哈希的链接时，自动弹出查询窗口。"
+  },
+  "setting_section_currency": {
+    "message": "货币"
+  },
+  "setting_section_currency_prefer_usd": {
+    "message": "优先使用美元"
+  },
+  "setting_section_currency_prefer_cny": {
+    "message": "优先使用人民币"
+  },
+  "setting_section_price": {
+    "message": "价格"
+  },
+  "setting_section_price_RED_UP_GREEN_DOWN": {
+    "message": "红涨绿跌"
+  },
+  "setting_section_price_RED_DOWN_GREEN_UP": {
+    "message": "绿涨红跌"
+  },
+  "setting_section_price_browserbadge_enable": {
+    "message": "启用价格角标"
+  },
+  "setting_section_price_browserbadge_enable_helptext": {
+    "message": "比特币的实时价格将会显示在浏览器右上角。"
+  },
+  "popup_search_placeholder": {
+    "message": "地址/高度/哈希..."
+  },
+  "popup_update_notification": {
+    "message": "检测到新版本，点此升级。"
+  },
+  "popup_markets_exchange": {
+    "message": "交易所"
+  },
+  "popup_markets_last": {
+    "message": "最新价"
+  },
+  "popup_markets_high": {
+    "message": "最高价"
+  },
+  "popup_markets_low": {
+    "message": "最低价"
+  },
+  "popup_markets_vol": {
+    "message": "成交量"
+  },
+  "popup_last_update": {
+    "message": "最后更新于"
+  },
+  "popup_settings": {
+    "message": "设置"
   }
 }
+

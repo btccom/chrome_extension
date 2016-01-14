@@ -5,9 +5,11 @@
     <title>Popup</title>
     <style>
         [v-cloak] {
-            display: none;
+            visibility: hidden;
         }
     </style>
+
+    <script src="/components/i18n.js"></script>
 </head>
 <body>
 
@@ -17,7 +19,8 @@
             <div class="search">
                 <form method="GET" action="https://chain.btc.com/search" class="search-form" target="_blank">
                     <div class="search-input-wrapper">
-                        <input class="search-input" type="search" name="q" placeholder="Address/Height/Hash..."
+                        <input class="search-input" type="search" name="q"
+                               data-i18n="popup_search_placeholder" data-i18n-attribute="placeholder"
                                autofocus autocomplete="off" spellcheck="false" >
                     </div>
                     <div class="search-button-wrapper">
@@ -26,23 +29,21 @@
                 </form>
             </div>
 
-            <div class="update-notification text-info bg-info" v-if="needUpdate">
-                <a href="https://chain.btc.com/en/applications/extension" :title="latestVersion.release_note" target="_blank">
-                    检测到新版本（{{ latestVersion.version }}），点此升级。
-                </a>
+            <div class="update-notification text-info bg-info" v-show="needUpdate">
+                <a href="https://chain.btc.com/en/applications/extension" :title="latestVersion.release_note" target="_blank" data-i18n="popup_update_notification"></a>
             </div>
 
             <div class="markets">
                 <table class="markets-table">
                     <tr>
-                        <th class="text-right">市场</th>
-                        <th class="text-right">最新成交价</th>
-                        <th class="text-right" title="24 小时最高">最高</th>
-                        <td class="text-right" title="24 小时最低">最低</td>
-                        <th class="text-right" title="24 小时成交量">成交量</th>
+                        <th class="text-right" data-i18n="popup_markets_exchange"></th>
+                        <th class="text-right" data-i18n="popup_markets_last"></th>
+                        <th class="text-right" data-i18n="popup_markets_high"></th>
+                        <th class="text-right" data-i18n="popup_markets_low"></th>
+                        <th class="text-right" data-i18n="popup_markets_vol"></th>
                     </tr>
                     <tr v-for="s in symbols" track-by="symbol">
-                        <td class="text-right">{{ s.platform_zh_cn }}</td>
+                        <td class="text-right">{{ s | exchangeName }}</td>
                         <td class="text-right price-indicator-td">
                             <price-indicator :v="markets.data[s.symbol].last" :rates="rates" :symbol="s" :options="options"></price-indicator>
                         </td>
@@ -51,14 +52,14 @@
                         <td class="text-right">{{ markets.data[s.symbol].vol / 1e8 | numberFormat 0 }}</td>
                     </tr>
                 </table>
-                <div class="text-right markets-lastupdate">最后更新于 {{ markets.updatedAt | timestampFormat }}</div>
+                <div class="text-right markets-lastupdate"><span data-i18n="popup_last_update"></span> {{ markets.updatedAt | timestampFormat }}</div>
             </div>
 
             <footer class="footer">
                 <a href="https://chain.btc.com" target="_blank" style="vertical-align: top; display: inline-block;">
                     <i class="icon-btc-logo"></i>
                 </a>
-                <a href="/components/option/option.html" target="_blank" class="option">设置</a>
+                <a href="/components/option/option.html" target="_btccomblank" class="option" data-i18n="popup_settings"></a>
             </footer>
         </div>
     </div>

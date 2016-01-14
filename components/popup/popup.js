@@ -102,13 +102,13 @@ new Vue({
             release_note: ''
         }
     },
-    filter: {
-
+    filters: {
+        exchangeName(symbol) {
+            return symbol[`platform_${utils.getLocale()}`];
+        }
     },
     components: {
         priceIndicator
-    },
-    computed: {
     },
     ready() {
         chrome.storage.onChanged.addListener(changes => {
