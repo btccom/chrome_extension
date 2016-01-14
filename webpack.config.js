@@ -27,6 +27,5 @@ module.exports = {
                 loader: 'url?limit=10000'
             }
         ]
-    },
-    devtool: '#cheap-source-map'
+    }
 };

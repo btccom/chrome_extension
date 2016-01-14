@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf npm-debug.log build/*",
-    "dev": "webpack -w"
+    "dev": "webpack -w",
+    "build": "/bin/bash ./build.sh"
   },
   "devDependencies": {
     "babel": "^6.3.26",

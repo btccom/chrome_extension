@@ -29,7 +29,7 @@ module.exports = {
         GRAY: [77, 77, 77, 255]
     },
     defaultConfig: {
-        'zh_CN': _.merge({}, defaultConfig, {
+        'zh_cn': _.merge({}, defaultConfig, {
             price: {
                 badge: {
                     source: 'huobibtccny'

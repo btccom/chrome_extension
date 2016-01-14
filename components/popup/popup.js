@@ -2,9 +2,7 @@ require('../../lib/bootstrap');
 require('./popup.less');
 
 // 修改为根据编译进行分支判断
-if (false) {
-    require('./ga');
-}
+require('./ga');
 
 const _ = require('lodash');
 const Vue = require('vue');
@@ -86,50 +84,52 @@ const priceIndicator = {
     }
 };
 
-new Vue({
-    el: '.container',
-    data: {
-        markets: {
-            data: {},
-            updatedAt: 0
-        },
-        symbols: [],
-        rates: {},
-        options: {},
-        needUpdate: false,
-        latestVersion: {
-            version: ''
-        }
-    },
-    filters: {
-        exchangeName(symbol) {
-            return symbol[`platform_${utils.getLocale()}`];
-        }
-    },
-    components: {
-        priceIndicator
-    },
-    ready() {
-        chrome.storage.onChanged.addListener(changes => {
-            if (changes.markets) {
-                console.log('new markets', changes.markets.newValue.data);
-                _.extend(this.markets, changes.markets.newValue);
+window.addEventListener('DOMContentLoaded', () => {
+    new Vue({
+        el: '.container',
+        data: {
+            markets: {
+                data: {},
+                updatedAt: 0
+            },
+            symbols: [],
+            rates: {},
+            options: {},
+            needUpdate: false,
+            latestVersion: {
+                version: ''
             }
-        });
-
-        storage.latestVersion().then(latestVersion => {
-            this.latestVersion = latestVersion;
-            const localVersion = chrome.runtime.getManifest().version;
-            console.log('localVersion = %s, latestVeresion = %s', localVersion, latestVersion.version);
-            this.needUpdate = localVersion !== latestVersion.version;
-        });
-
-        return Promise.join(storage.getMarkets(), storage.getSymbolAndRates(), storage.getOptions())
-            .then(([ markets, { symbols, rates }, options ]) => {
-                this.markets = markets;
-                this.symbols = symbols;
-                this.rates = rates;
-                this.options = options;
+        },
+        filters: {
+            exchangeName(symbol) {
+                return symbol[`platform_${utils.getLocale()}`];
+            }
+        },
+        components: {
+            priceIndicator
+        },
+        ready() {
+            chrome.storage.onChanged.addListener(changes => {
+                if (changes.markets) {
+                    console.log('new markets', changes.markets.newValue.data);
+                    _.extend(this.markets, changes.markets.newValue);
+                }
             });
-    }
+
+            storage.latestVersion().then(latestVersion => {
+                this.latestVersion = latestVersion;
+                const localVersion = chrome.runtime.getManifest().version;
+                console.log('localVersion = %s, latestVeresion = %s', localVersion, latestVersion.version);
+                this.needUpdate = localVersion !== latestVersion.version;
+            });
+
+            return Promise.join(storage.getMarkets(), storage.getSymbolAndRates(), storage.getOptions())
+                .then(([ markets, { symbols, rates }, options ]) => {
+                    this.markets = markets;
+                    this.symbols = symbols;
+                    this.rates = rates;
+                    this.options = options;
+                });
+        }
+    });
 });
