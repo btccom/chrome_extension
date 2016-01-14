@@ -1,8 +1,11 @@
 @import '../../style/common.less';
 
 .main-body {
-  width: 500px;
   padding: 15px;
+}
+
+.container {
+  width: 500px!important;
 }
 
 .search-form {
@@ -78,6 +81,10 @@
     font-weight: 400;
   }
 
+  th {
+    color: #999;
+  }
+
   .price-indicator-td {
     padding: 0;
   }
@@ -137,13 +144,17 @@
 }
 
 .footer {
+  position: relative;
   text-align: center;
   margin-top: 10px;
   line-height: 20px;
 }
 
 .option {
-  float: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
   font-size: 12px;
   text-decoration: none;
 }

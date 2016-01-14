@@ -18,7 +18,7 @@
     <div class="container" v-cloak>
         <div class="row">
             <div class="search">
-                <form method="GET" action="https://chain.btc.com/search" class="search-form" target="_blank">
+                <form method="GET" :action="submitURL" class="search-form" target="_blank">
                     <div class="search-input-wrapper">
                         <input class="search-input" type="search" name="q"
                                data-i18n="popup_search_placeholder" data-i18n-attribute="placeholder"

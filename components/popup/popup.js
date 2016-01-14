@@ -98,7 +98,8 @@ window.addEventListener('DOMContentLoaded', () => {
             needUpdate: false,
             latestVersion: {
                 version: ''
-            }
+            },
+            submitURL: `https://chain.btc.com/${utils.getLocale().replace('_', '-')}/search`
         },
         filters: {
             exchangeName(symbol) {
