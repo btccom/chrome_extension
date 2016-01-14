@@ -2,6 +2,7 @@ require('./option.less');
 require('../../lib/bootstrap');
 const _ = require('lodash');
 const Vue = require('vue');
+const utils = require('../../lib/utils');
 const storage = require('../../lib/storage');
 
 Promise.join(storage.getOptions(), storage.getSymbolAndRates())
@@ -11,6 +12,11 @@ Promise.join(storage.getOptions(), storage.getSymbolAndRates())
             data: {
                 options,
                 symbols
+            },
+            filters: {
+                exchangeName(symbol) {
+                    return symbol[`platform_${utils.getLocale()}`];
+                }
             },
             methods: {
                 submit(){

@@ -69,7 +69,7 @@
                             <span data-i18n="setting_section_price_browserbadge_enable"></span>
                         </label>
                         <select v-if="options.price.badge.enable" v-model="options.price.badge.source" style="margin-left: 10px;">
-                            <option :value="s.symbol" v-for="s in symbols" track-by="symbol">{{ s.platform_zh_cn }}</option>
+                            <option :value="s.symbol" v-for="s in symbols" track-by="symbol">{{ s | exchangeName }}</option>
                         </select>
                         <div class="help-text" data-i18n="setting_section_price_browserbadge_enable_helptext"></div>
                     </div>
