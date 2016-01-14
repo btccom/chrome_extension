@@ -232,44 +232,30 @@
     border:solid 0px red;
     height: 26px;
     width:100%;
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/logo@2x.png')!important;
-    background-position: center 8px!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/logo@2x.png') no-repeat center 8px !important;
     background-size: 63px auto!important;
 }
 .unconfirm{
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/unconfirmed-cn@2x.png')!important;
-    background-position: center center!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/unconfirmed-cn@2x.png') no-repeat center center !important;
     background-size: 125px auto!important;
 }
 .unconfirm_en{
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/unconfirmed@2x.png')!important;
-    background-position: center center!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/unconfirmed@2x.png') no-repeat center center !important;
     background-size: 125px auto!important;
 }
 .coinbase{
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/coinbase-cn@2x.png')!important;
-    background-position: center center!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/coinbase-cn@2x.png') no-repeat center center !important;
     background-size: 131px auto!important;
 }
 .coinbase_en{
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/coinbase@2x.png')!important;
-    background-position: center center!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/coinbase@2x.png') no-repeat center center !important;
     background-size: 131px auto!important;
 }
 .Orphaned{
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/orphan-block-cn@2x.png')!important;
-    background-position: center center!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/orphan-block-cn@2x.png') no-repeat center center !important;
     background-size: 50px auto!important;
 }
 .Orphaned_en{
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/orphan-block@2x.png')!important;
-    background-position: center center!important;
-    background-repeat: no-repeat!important;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/orphan-block@2x.png') no-repeat center center !important;
     background-size: 50px auto!important;
 }

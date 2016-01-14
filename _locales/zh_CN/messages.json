@@ -1,8 +1,8 @@
 {
-  "appName": {
+  "extName": {
     "message": "BTC.COM Chrome 扩展"
   },
-  "appDesc": {
+  "extDesc": {
     "message": "本插件提供比特币区块链数据的快捷查询功能，由 BTC.COM 团队出品。"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "appName": {
+  "extName": {
     "message": "BTC.COM Extension for Chrome"
   },
-  "appDesc": {
+  "extDesc": {
     "message": "An extension that provides data of bitcoin."
   }
 }
