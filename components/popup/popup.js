@@ -1,6 +1,11 @@
 require('../../lib/bootstrap');
 require('./popup.less');
 
+// 修改为根据编译进行分支判断
+if (false) {
+    require('./ga');
+}
+
 const _ = require('lodash');
 const Vue = require('vue');
 const moment = require('moment');
