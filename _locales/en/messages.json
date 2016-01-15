@@ -67,5 +67,8 @@
   },
   "popup_settings": {
     "message": "Settings"
+  },
+  "contextmenu": {
+    "message": "Search BTC.COM for \"%s\""
   }
 }

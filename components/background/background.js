@@ -1,4 +1,5 @@
 require('../../lib/bootstrap');
+require('./context_menu');
 
 const io = require('socket.io-client');
 const moment = require('moment');

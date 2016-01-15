@@ -67,6 +67,9 @@
   },
   "popup_settings": {
     "message": "设置"
+  },
+  "contextmenu": {
+    "message": "在 BTC.COM 搜索 \"%s\""
   }
 }
 
