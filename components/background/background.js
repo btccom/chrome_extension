@@ -8,7 +8,9 @@ const utils = require('../../lib/utils');
 const config = require('../../config');
 
 // 使用 websocket 连接
-const socket = io(config.websocketEndpoint);
+const socket = io(config.websocketEndpoint, {
+    path: config.websocketPath
+});
 
 // 连接失败
 socket.on('connect_error', e => {

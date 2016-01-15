@@ -20,8 +20,9 @@ const defaultConfig = {
 module.exports = {
     autoUpdateEndpoint: 'http://static.btc.com/chrome-ext/LATEST',
     blockAPIEndpoint: 'https://api.chain.btc.com/v1',
-    marketsAPIEndpoint: 'http://www.bitmain.com:9000',
-    websocketEndpoint: 'http://www.bitmain.com:8080',
+    marketsAPIEndpoint: 'https://price.api.btc.com/v1',
+    websocketEndpoint: 'https://price.api.btc.com',
+    websocketPath: '/v1/socket.io',
 
     colors: {
         RED: [241, 79, 90, 255],
