@@ -1,0 +1,160 @@
+@import '../../style/common.less';
+
+.main-body {
+  padding: 15px;
+}
+
+.container {
+  width: 500px!important;
+}
+
+.search-form {
+  display: table;
+  width: 100%;
+}
+
+.search-button-wrapper,
+.search-input-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.search-input-wrapper {
+  overflow: hidden;
+}
+
+.search-button-wrapper {
+  width: 30px
+}
+
+.search-input,
+.search-button {
+  height: 30px;
+}
+
+.search-input {
+  font-size: 12px;
+
+  &::-webkit-input-placeholder {
+    font-family: @font-family-sans-serif;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: #66afe9;
+  }
+
+  width: 100%;
+  padding: 4px 10px;
+
+  border: 1px solid #ddd;
+  border-right: none;
+  font-family: @font-family-monospace;
+}
+
+.search-button {
+  width: 30px;
+  background: #66afe9;
+  color: #fff;
+  border: none;
+  padding: 0;
+}
+
+.update-notification {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.markets {
+  margin-top: 15px;
+}
+
+.markets-table {
+  width: 100%;
+
+  th, td {
+    border-bottom: 1px solid #efefef;
+    padding: 5px 10px;
+    font-weight: 400;
+  }
+
+  th {
+    color: #999;
+  }
+
+  .price-indicator-td {
+    padding: 0;
+  }
+}
+
+.markets-lastupdate {
+  margin-top: 5px;
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@keyframes fadeout-red {
+  from {
+    background: rgba(241, 79, 90, .5);
+  }
+  to {
+    background: #fff;
+  }
+}
+
+@keyframes fadeout-green {
+  from {
+    background: rgba(25, 197, 95, .5);
+  }
+  to {
+    background: #fff;
+  }
+}
+
+.price-indicator {
+  background: #fff;
+  line-height: 30px;
+  padding-right: 10px;
+
+  &.active-green {
+    -webkit-animation: fadeout-green 1s ease-out;
+    .glyphicon {
+      color: green;
+      visibility: visible;
+    }
+  }
+
+  &.active-red {
+    -webkit-animation: fadeout-red 1s ease-out;
+    .glyphicon {
+      color: red;
+      visibility: visible;
+    }
+  }
+
+  .glyphicon {
+    font-size: 12px;
+    margin-right: 3px;
+    visibility: hidden;
+  }
+}
+
+.footer {
+  position: relative;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 20px;
+}
+
+.option {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  font-size: 12px;
+  text-decoration: none;
+}

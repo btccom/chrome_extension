@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf npm-debug.log build/*",
-    "dev": "webpack -w"
+    "dev": "webpack -w",
+    "build": "/bin/bash ./build.sh"
   },
   "devDependencies": {
     "babel": "^6.3.26",
@@ -15,6 +16,8 @@
     "babel-preset-stage-0": "^6.3.13",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
+    "html-loader": "^0.4.0",
+    "json-loader": "^0.5.4",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
     "raw-loader": "^0.5.1",
@@ -23,12 +26,16 @@
     "webpack": "^1.12.10"
   },
   "dependencies": {
+    "bitcore-lib": "^0.13.11",
     "bluebird": "^3.1.1",
     "bootstrap": "^3.3.6",
+    "chrome-promise": "^1.0.6",
     "jquery": "^2.2.0",
     "lodash": "^3.10.1",
     "moment": "^2.11.1",
     "socket.io": "^1.4.4",
+    "superagent": "^1.6.1",
+    "superagent-bluebird-promise": "^3.0.0",
     "tether-drop": "^1.4.2",
     "vue": "^1.0.13-csp"
   }
