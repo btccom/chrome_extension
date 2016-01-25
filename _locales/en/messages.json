@@ -50,8 +50,8 @@
   "popup_markets_exchange": {
     "message": "Exchange"
   },
-  "popup_markets_last": {
-    "message": "Last"
+  "popup_markets_latest": {
+    "message": "Latest"
   },
   "popup_markets_high": {
     "message": "High"

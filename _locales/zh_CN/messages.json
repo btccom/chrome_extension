@@ -50,7 +50,7 @@
   "popup_markets_exchange": {
     "message": "交易所"
   },
-  "popup_markets_last": {
+  "popup_markets_latest": {
     "message": "最新价"
   },
   "popup_markets_high": {
