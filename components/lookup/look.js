@@ -8,7 +8,7 @@ storage.getOptions('query.dropdown.enable')
         if (isEnabled) {
 
             document.body.addEventListener("click", isSelect, false);
-            document.body.addEventListener("mouseover", isLink, false);
+            $("a").mouseover(function(){isLink();});
 
         }
     });
@@ -17,7 +17,7 @@ storage.getOptions('query.dropdown.enable')
 function isLink() {
     if (window.event.srcElement.tagName == "A") {
         var preworth = worth;
-        worth = $.trim(window.event.srcElement.innerText);
+        worth = window.event.srcElement.textContent.trim();
         if (looktype()) {
             clearSlct();//清除选中元素
             targetElement = window.event.target;
