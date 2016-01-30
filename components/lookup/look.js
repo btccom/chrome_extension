@@ -8,6 +8,7 @@ storage.getOptions('query.dropdown.enable')
         if (isEnabled) {
 
             document.body.addEventListener("click", isSelect, false);
+            document.body.addEventListener("mouseover", isLink, false);
             $("a").mouseover(function(){isLink();});
 
         }
