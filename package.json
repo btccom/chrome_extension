@@ -37,6 +37,6 @@
     "superagent": "^1.6.1",
     "superagent-bluebird-promise": "^3.0.0",
     "tether-drop": "^1.4.2",
-    "vue": "^1.0.13-csp"
+    "vue": "csp"
   }
 }

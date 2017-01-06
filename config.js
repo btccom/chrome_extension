@@ -18,7 +18,7 @@ const defaultConfig = {
 };
 
 module.exports = {
-    autoUpdateEndpoint: 'http://static.btc.com/chrome-ext/LATEST',
+    autoUpdateEndpoint: 'http://s.btc.com/chrome-ext/LATEST',
     blockAPIEndpoint: 'https://api.chain.btc.com/v1',
     marketsAPIEndpoint: 'https://price.api.btc.com/v1',
     websocketEndpoint: 'https://price.api.btc.com',

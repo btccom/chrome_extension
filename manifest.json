@@ -61,6 +61,5 @@
       ]
     }
   ],
-  "options_page": "components/option/option.html",
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+  "options_page": "components/option/option.html"
 }
