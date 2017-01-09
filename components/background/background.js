@@ -48,8 +48,8 @@ storage.get('markets').then(items => {
         };
     }
 
-    socket.on('snapshot', function(data) {
-        console.log('websocket snapshot', data);
+    socket.on('snapshot', function (data) {
+        //console.log('websocket snapshot', data);
 
         markets = {
             data,
@@ -58,8 +58,8 @@ storage.get('markets').then(items => {
         storage.set({markets});
     });
 
-    socket.on('last', function(data) {
-        console.log('websocket last', data);
+    socket.on('last', function (data) {
+        //console.log('websocket last', data);
 
         _.merge(markets, {
             data,
@@ -96,8 +96,20 @@ chrome.storage.onChanged.addListener(changes => {
                     })
                     .then(convertedLast => {
                         // 设置角标
+                        var lastPrice= Math.floor(convertedLast).toFixed(0);
+                        if (lastPrice.toString().length == 4) {
+                            var isMac = (navigator.platform == "Mac68K") || (navigator.platform == "MacPPC") || (navigator.platform == "Macintosh") || (navigator.platform == "MacIntel");
+                            if (isMac) {
+                                lastPrice = (lastPrice/1000).toString().substring(0, 3) + 'K'
+                            }
+                        }
+                        else {
+                            if (lastPrice.toString().length > 4) {
+                                lastPrice = (lastPrice/1000).toString().substring(0, 2) + 'K'
+                            }
+                        }
                         chrome.browserAction.setBadgeText({
-                            text: Math.floor(convertedLast).toFixed(0)
+                            text: lastPrice
                         });
 
                         // 设置背景色

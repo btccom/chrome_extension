@@ -3,3 +3,7 @@ npm-debug.log
 /build/
 /build_*/
 *.bundle.js
+.idea
+.DS_Store
+build_1.1.0.crx
+yarn-error.log

@@ -62,7 +62,7 @@ const priceIndicator = {
     },
     watch: {
         v(nv, ov) {
-            console.log('nv = %d, ov = %d', nv, ov);
+            // console.log('nv = %d, ov = %d', nv, ov);
             if (ov == null) {
                 this.change = 0;
             } else {
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
         ready() {
             chrome.storage.onChanged.addListener(changes => {
                 if (changes.markets) {
-                    console.log('new markets', changes.markets.newValue.data);
+                    // console.log('new markets', changes.markets.newValue.data);
                     _.extend(this.markets, changes.markets.newValue);
                 }
             });
@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', () => {
             storage.latestVersion().then(latestVersion => {
                 this.latestVersion = latestVersion;
                 const localVersion = chrome.runtime.getManifest().version;
-                console.log('localVersion = %s, latestVeresion = %s', localVersion, latestVersion.version);
+                // console.log('localVersion = %s, latestVeresion = %s', localVersion, latestVersion.version);
                 this.needUpdate = localVersion !== latestVersion.version;
             });
 

@@ -31,18 +31,7 @@
     "persistent": true
   },
   "web_accessible_resources": [
-    "components/lookup/images/icon-close@2x.png",
-    "components/lookup/images/icon-right@2x.png",
-    "components/lookup/images/unconfirmed-cn@2x.png",
-    "components/lookup/images/unconfirmed@2x.png",
-    "components/lookup/images/coinbase@2x.png",
-    "components/lookup/images/coinbase-cn@2x.png",
-    "components/lookup/images/orphan-block-cn@2x.png",
-    "components/lookup/images/orphan-block@2x.png",
-    "components/lookup/images/logo@2x.png",
-    "components/lookup/images/arrow-up2@2x.png",
-    "components/lookup/images/loading.gif",
-    "components/lookup/images/loading2.gif"
+    "components/lookup/images/*"
   ],
   "content_scripts": [
     {
