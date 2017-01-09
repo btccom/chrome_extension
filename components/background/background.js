@@ -92,22 +92,24 @@ chrome.storage.onChanged.addListener(changes => {
                             rates,
                             _.find(symbols, e => e.symbol == opt.price.badge.source).currency_type,
                             opt.price.preferCurrency,
-                            last / 1e3);
+                            last / 1e3
+                        );
                     })
                     .then(convertedLast => {
                         // 设置角标
-                        var lastPrice= Math.floor(convertedLast).toFixed(0);
-                        if (lastPrice.toString().length == 4) {
-                            var isMac = (navigator.platform == "Mac68K") || (navigator.platform == "MacPPC") || (navigator.platform == "Macintosh") || (navigator.platform == "MacIntel");
-                            if (isMac) {
-                                lastPrice = (lastPrice/1000).toString().substring(0, 3) + 'K'
+                        let lastPrice= Math.floor(convertedLast).toFixed(0);
+                        const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+                        const lengthLimit = isMac ? 3 : 4;
+                        const overflow = lastPrice.length > lengthLimit;
+
+                        if (overflow) {     // 转为 {number.number}K 格式
+                            lastPrice = (lastPrice / 1000).toFixed(1).slice(0, 3);
+                            if (lastPrice[lastPrice.length - 1] === '.') {
+                                lastPrice = lastPrice.slice(0, -1);
                             }
+                            lastPrice += 'K';
                         }
-                        else {
-                            if (lastPrice.toString().length > 4) {
-                                lastPrice = (lastPrice/1000).toString().substring(0, 2) + 'K'
-                            }
-                        }
+
                         chrome.browserAction.setBadgeText({
                             text: lastPrice
                         });
