@@ -1,0 +1,74 @@
+{
+  "ext_name": {
+    "message": "BTC.COM Extension for Chrome"
+  },
+  "ext_desc": {
+    "message": "An extension that provides data of bitcoin."
+  },
+  "setting_title": {
+    "message": "BTC.COM Settings"
+  },
+  "setting_section_query": {
+    "message": "BTC.COM Search"
+  },
+  "setting_section_query_dropdown_enable": {
+    "message": "Enable auto search"
+  },
+  "setting_section_query_dropdown_enable_helptext": {
+    "message": "Search by BTC.COM when hash or address highlighted or link hovered"
+  },
+  "setting_section_currency": {
+    "message": "Currency"
+  },
+  "setting_section_currency_prefer_usd": {
+    "message": "USD"
+  },
+  "setting_section_currency_prefer_cny": {
+    "message": "CNY"
+  },
+  "setting_section_price": {
+    "message": "Price"
+  },
+  "setting_section_price_RED_UP_GREEN_DOWN": {
+    "message": "Red up Green down"
+  },
+  "setting_section_price_RED_DOWN_GREEN_UP": {
+    "message": "Green up Red down"
+  },
+  "setting_section_price_browserbadge_enable": {
+    "message": "Enable price on icon"
+  },
+  "setting_section_price_browserbadge_enable_helptext": {
+    "message": "Show price on the extension icon"
+  },
+  "popup_search_placeholder": {
+    "message": "Address/Height/Hash..."
+  },
+  "popup_update_notification": {
+    "message": "New version detected, click here to update."
+  },
+  "popup_markets_exchange": {
+    "message": "Exchange"
+  },
+  "popup_markets_latest": {
+    "message": "Latest"
+  },
+  "popup_markets_high": {
+    "message": "High"
+  },
+  "popup_markets_low": {
+    "message": "Low"
+  },
+  "popup_markets_vol": {
+    "message": "Vol."
+  },
+  "popup_last_update": {
+    "message": "Updated at"
+  },
+  "popup_settings": {
+    "message": "Settings"
+  },
+  "contextmenu": {
+    "message": "Search BTC.COM for \"%s\""
+  }
+}
