@@ -1,21 +1,21 @@
 {
   "ext_name": {
-    "message": "BTC.COM Extension for Chrome"
+    "message": "BTC.com Extension for Chrome"
   },
   "ext_desc": {
     "message": "An extension that provides data of bitcoin."
   },
   "setting_title": {
-    "message": "BTC.COM Settings"
+    "message": "BTC.com Settings"
   },
   "setting_section_query": {
-    "message": "BTC.COM Search"
+    "message": "BTC.com Search"
   },
   "setting_section_query_dropdown_enable": {
     "message": "Enable auto search"
   },
   "setting_section_query_dropdown_enable_helptext": {
-    "message": "Search by BTC.COM when hash or address highlighted or link hovered"
+    "message": "Search by BTC.com when hash or address highlighted or link hovered"
   },
   "setting_section_currency": {
     "message": "Currency"
@@ -69,6 +69,6 @@
     "message": "Settings"
   },
   "contextmenu": {
-    "message": "Search BTC.COM for \"%s\""
+    "message": "Search BTC.com for \"%s\""
   }
 }

@@ -103,7 +103,7 @@ chrome.storage.onChanged.addListener(changes => {
                         const overflow = lastPrice.length > lengthLimit;
 
                         if (overflow) {     // 转为 {number.number}K 格式
-                            lastPrice = (lastPrice / 1000).toString().slice(0, 3);
+                            lastPrice = parseFloat(lastPrice / 1000).toString().slice(0, 3);
                             if (lastPrice[lastPrice.length - 1] === '.') {
                                 lastPrice = lastPrice.slice(0, -1);
                             }

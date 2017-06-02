@@ -8,7 +8,7 @@ storage.getOptions('query.dropdown.enable')
         if (isEnabled) {
 
             document.body.addEventListener("click", isSelect, false);
-            document.body.addEventListener("mouseover", isLink, false);
+            //document.body.addEventListener("mouseover", isLink, false);
             $("a").mouseover(function(){isLink();});
 
         }
@@ -64,17 +64,18 @@ function isSelect() {
         }
     }
 }
+
 /*用途：创建一个面板*/
 function panel() {
     var pagewidth = document.body.clientWidth - event.clientX;
     var clientX = event.clientX + document.body.scrollLeft;
-    //var clientY = event.clientY+document.body.scrollTop;
     var clientY = $(targetElement).offset().top + $(targetElement).height();
     if (oDiv) {
         oDiv.remove()
     }
     oDiv = document.createElement('div');
-    oDiv.id = "oDiv";// 赋值ID
+    oDiv.id = "oDiv";
+    oDiv.classList.add('______btccom______');
     document.body.appendChild(oDiv);
     document.body.addEventListener("click", lookover, false);
     document.getElementById('oDiv').addEventListener('click', stopEvent, true);
@@ -86,7 +87,7 @@ function panel() {
     var html = '<div id="oDiv_top" class="oDiv_top"></div>' +
         '<div class="oDiv_point"></div>' +
         '<div id="P_title">' +
-        '<div id="typelink"><a class="typeinfo" href="https://chain.btc.com/' + type + '/' + worth + '" target="_blank"><span class="typename">' + dicbook(type) + '</span><span class="sanjiao"></span></a></div>' +
+        '<div id="typelink"><a class="typeinfo" href="https://btc.com/' + type + '/' + worth + '" target="_blank"><span class="typename">' + dicbook(type) + '</span><span class="sanjiao"></span></a></div>' +
         '<div id="close"></div>' +
         '</div>' +
         '<div class="topline"></div>' +
@@ -95,7 +96,7 @@ function panel() {
         '<table id="datainfo" class="datainfo"></table>' +
         '</div>' +
         '<div class="oDivline"></div>' +
-        '<a href="https://chain.btc.com" target="_blank" class="btc_logo"></a>';
+        '<a href="https://btc.com" target="_blank" class="btc_logo"></a>';
     $("#oDiv").append(html);
     // $("#oDiv_top").click(function(){targetElement.click();})
     for (var item in element) {
@@ -113,7 +114,7 @@ function panel() {
     else {
         oDiv.style.left = (clientX - 7) + 'px';// 指定创建的DIV在文档中距离左侧的位置
     }
-    oDiv.style.top = (clientY + 9) + 'px';// 指定创建的DIV在文档中距离顶部的位置
+    oDiv.style.top = (clientY +12) + 'px';// 指定创建的DIV在文档中距离顶部的位置
     getdata();
     //Drag("oDiv"); //拖动窗口
 }
@@ -122,9 +123,9 @@ function panel() {
 function getdata() {
     var url = '';
     if (lng == "zn") {
-        url = 'https://btcapp.api.btc.com/v1/search/' + worth + '?user_lang=zh-cn';
+        url = 'https://btcapp.api.BTC.com/v1/search/' + worth + '?user_lang=zh-cn';
     } else {
-        url = 'https://btcapp.api.btc.com/v1/search/' + worth + '?user_lang=en';
+        url = 'https://btcapp.api.BTC.com/v1/search/' + worth + '?user_lang=en';
     }
     $.ajax({
         type: "get",
@@ -147,7 +148,7 @@ function getdata() {
                             $("#datainfo").addClass("Orphaned_en");
                         }
                     }
-                    $("#btc_height").html("<a target='_blank' href='https://chain.btc.com/block/" + result.data.height + "' >" + result.data.height + "" + Orphaned + "</a>");
+                    $("#btc_height").html("<a target='_blank' href='https://btc.com/block/" + result.data.height + "' >" + result.data.height + "" + Orphaned + "</a>");
                     $("#btc_confirm").text(result.data.confirm);
                     $("#btc_time").text(localTime(result.data.time));
                     $("#btc_size").text(formatnum(result.data.size) + " Bytes");
@@ -156,12 +157,12 @@ function getdata() {
                         $("#btc_Relayed").html(result.data.relayed_by)
                     }
                     else {
-                        $("#btc_Relayed").html("<a target='_blank' href='https://chain.btc.com/stats/pool/" + result.data.relayed_by + "'>" + result.data.relayed_by + "</a>");
+                        $("#btc_Relayed").html("<a target='_blank' href='https://btc.com/stats/pool/" + result.data.relayed_by + "'>" + result.data.relayed_by + "</a>");
                     }
                 }
                 if (result.type == "address") {//地址
-                    $("#btc_Balance").text((parseFloat(result.data.final_balance) / floatnum).toFixed(8).toString());
-                    $("#btc_total_received").text((parseFloat(result.data.total_received) / floatnum).toFixed(8).toString());
+                    $("#btc_Balance").text((parseFloat(result.data.final_balance) / floatnum).toFixed(8).toString() +' BTC');
+                    $("#btc_total_received").text((parseFloat(result.data.total_received) / floatnum).toFixed(8).toString() +' BTC');
                     if (result.data.unconfirmed_tx_count == "0") {
                         $("#btc_txcount").text(result.data.n_tx)
                     }
@@ -170,7 +171,7 @@ function getdata() {
                     }
                     ;
                     $("#btc_past_month_tx_count").text(result.data.past_month_tx_count);
-                    $("#btc_first_tx_timestamp").html("<a target='_blank' href='https://chain.btc.com/tx/" + result.data.first_tx_hash + "'>" + localTime(result.data.first_tx_timestamp) + "</a>");
+                    $("#btc_first_tx_timestamp").html("<a target='_blank' href='https://btc.com/tx/" + result.data.first_tx_hash + "'>" + localTime(result.data.first_tx_timestamp) + "</a>");
                     if (result.data.n_tx == "0") {
                         $("#btc_past_month_tx_count").parent().parent().remove();
                         $("#btc_first_tx_timestamp").parent().parent().remove();
@@ -181,17 +182,18 @@ function getdata() {
                     }
                     else {
                         if (lng == "zn") {//印象
-                            $("#btc_Impress").html("<a target='_blank' href='https://chain.btc.com/address/" + result.data.address + "'>印象" + result.data.impressions_count + "条</a>");
+                            $("#btc_Impress").html("<a target='_blank' href='https://btc.com/address/" + result.data.address + "'>印象" + result.data.impressions_count + "条</a>");
                         } else {
-                            $("#btc_Impress").html("<a target='_blank' href='https://chain.btc.com/address/" + result.data.address + "'>" + result.data.impressions_count + " Impressions</a>");
+                            $("#btc_Impress").html("<a target='_blank' href='https://btc.com/address/" + result.data.address + "'>" + result.data.impressions_count + " Impressions</a>");
                         }
                     }
                 }
                 if (result.type == "tx") {//交易
                     $("#btc_timestamp").text(localTime(result.data.timestamp));
-                    $("#btc_confirm").text(result.data.confirm);
-                    $("#btc_fee").text((parseFloat(result.data.fee) / floatnum).toFixed(8).toString());
-                    $("#btc_height").html("<a target='_blank' href='https://chain.btc.com/block/" + result.data.height + "'>" + result.data.height + "</a>");
+                    $("#btc_confirm").html(result.data.confirm);
+                    $("#btc_size").text(result.data.size +' Bytes');
+                    $("#btc_fee").text((parseFloat(result.data.fee) / floatnum).toFixed(8).toString() +' BTC');
+                    $("#btc_height").html("<a target='_blank' href='https://btc.com/block/" + result.data.height + "'>" + result.data.height + "</a>");
                     if (result.data.is_coinbase) { //coinbase 交易
                         $("#btc_fee").text(((result.data.block_rewards + parseFloat(result.data.fee)) / floatnum).toFixed(8).toString());
                         $("#btc_fee").parent().prev().html(dicbook("reward"));
@@ -202,7 +204,7 @@ function getdata() {
                             tr += '<td class="td2" style="height:20px!important;font-size:13px!important;"><div id="Relayed">' + result.data.relayed_by + '</div></td></tr>';
                         }
                         else {
-                            tr += '<td class="td2" style="height:20px!important;font-size:13px!important;"><div id="Relayed"><a target="_blank" href="https://chain.btc.com/stats/pool/' + result.data.relayed_by + '">' + result.data.relayed_by + '</a></div></td></tr>';
+                            tr += '<td class="td2" style="height:20px!important;font-size:13px!important;"><div id="Relayed"><a target="_blank" href="https://btc.com/stats/pool/' + result.data.relayed_by + '">' + result.data.relayed_by + '</a></div></td></tr>';
                         }
                         $("#datainfo").append(tr);
                         if (lng == "zn") {
@@ -216,11 +218,18 @@ function getdata() {
                         $("#btc_timestamp").text("-");
                         if (lng == "zn") {
                             $("#datainfo").addClass("unconfirm");
+                            $("#btc_confirm").html(`<a href='https://pushtx.btc.com/?txhash=${worth}' target="_blank">
+                                                    <div class="btc-speed-up">
+                                                        <span>0</span>
+                                                        <span class="btc-speed-btn">交易加速</span>
+                                                    </div>
+                                               </a>`);
                         }
                         else {
                             $("#datainfo").addClass("unconfirm_en");
+                            $("#btc_confirm").html(0);
                         }
-                        $("#btc_confirm").text("0");
+
                         $("#btc_height").text("-");
                     }
                 }
@@ -231,7 +240,7 @@ function getdata() {
                 $(".topline").remove();
                 $(".oDivline").remove();
                 $(".btc_logo").remove();
-                $("#content_data").html("<div class='error_info'><div>" + dicbook('ErrorOne') + "</div><div>" + dicbook('ErrorTwo') + "</div><a href='https://chain.btc.com' target='_blank' class='btc_logo'></a></div>");
+                $("#content_data").html("<div class='error_info'><div>" + dicbook('ErrorOne') + "</div><div>" + dicbook('ErrorTwo') + "</div><a href='https://btc.com' target='_blank' class='btc_logo'></a></div>");
             }
         },
         timeout: 20000,
@@ -244,7 +253,7 @@ function getdata() {
             $(".topline").remove();
             $(".oDivline").remove();
             $(".btc_logo").remove();
-            $("#content_data").html("<div class='error_info'><div>" + dicbook('ErrorOne') + "</div><div>" + dicbook('ErrorTwo') + "</div><a href='https://chain.btc.com' target='_blank' class='btc_logo'></a></div>");
+            $("#content_data").html("<div class='error_info'><div>" + dicbook('ErrorOne') + "</div><div>" + dicbook('ErrorTwo') + "</div><a href='https://btc.com' target='_blank' class='btc_logo'></a></div>");
         }
     });
 

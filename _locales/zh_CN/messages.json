@@ -1,15 +1,15 @@
 {
   "ext_name": {
-    "message": "BTC.COM Chrome 扩展"
+    "message": "BTC.com Chrome 扩展"
   },
   "ext_desc": {
-    "message": "本插件提供比特币区块链数据的快捷查询功能，由 BTC.COM 团队出品。"
+    "message": "本插件提供比特币区块链数据的快捷查询功能，由 BTC.com 团队出品。"
   },
   "setting_title": {
-    "message": "BTC.COM 设置"
+    "message": "BTC.com 设置"
   },
   "setting_section_query": {
-    "message": "BTC.COM 查询"
+    "message": "BTC.com 查询"
   },
   "setting_section_query_dropdown_enable": {
     "message": "启用哈希识别查询"
@@ -69,7 +69,7 @@
     "message": "设置"
   },
   "contextmenu": {
-    "message": "在 BTC.COM 搜索 \"%s\""
+    "message": "在 BTC.com 搜索 \"%s\""
   }
 }
 

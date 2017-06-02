@@ -5,6 +5,6 @@ chrome.contextMenus.create({
     onclick: info => {
         const t = info.selectionText.trim();
         if (!t.length) return false;
-        window.open(`https://chain.btc.com/search/${t}`, '_blank');
+        window.open(`https://chain.BTC.com/search/${t}`, '_blank');
     }
 });

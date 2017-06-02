@@ -1,261 +1,321 @@
-#oDiv{
-    clear:both!important;
-    padding:0px!important;
-    position: absolute!important;
-    min-width:300px!important;
-    z-index:10000!important;
+
+.______btccom______ {
+    clear: both !important;
+    padding: 0px !important;
+    position: absolute !important;
+    min-width: 300px !important;
+    z-index: 10000 !important;
     min-height: 151px;
-    border-radius:3px!important;
-    box-shadow: 1px 3px 9px 0 #A2A2A2!important;
-    background-color:#FFFFFF!important;
-    padding-bottom: 2px!important;
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
-    border:solid 0px red;
+    border-radius: 3px !important;
+    box-shadow: 1px 3px 9px 0 #A2A2A2 !important;
+    background-color: #FFFFFF !important;
+    padding-bottom: 2px !important;
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
+    border: solid 0px red;
 }
-#oDiv:first-letter{
-    text-transform:capitalize;
+
+.______btccom______:first-letter {
+    text-transform: capitalize;
 }
-#oDiv a{
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
+
+.______btccom______ a {
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
     font-size: 12px;
     /*line-height: 16px;*/
-    color:#4a90e2!important;
+    color: #4a90e2 !important;
     text-decoration: none;
 }
-#oDiv a:hover{
-    text-decoration:underline;
+
+.______btccom______ a:hover {
+    text-decoration: underline;
 }
-.oDiv_top{
-    position:absolute;
-    border:solid 0px red;
-    width:105%;
-    height:14px;
-    margin-left:-5%;
+
+.______btccom______ .oDiv_top {
+    position: absolute;
+    border: solid 0px red;
+    width: 105%;
+    height: 14px;
+    margin-left: -5%;
     margin-top: -12px;
 }
-.oDiv_point{
+
+.______btccom______ .oDiv_point {
     position: absolute;
-    border:solid 0px red;
-    height:20px!important;
-    width:24px!important;
-    top: -16px!important;
+    border: solid 0px red;
+    height: 20px !important;
+    width: 24px !important;
+    top: -16px !important;
     margin-left: 25px;
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/arrow-up2@2x.png')!important;
-    background-position: right center!important;
-    background-repeat: no-repeat!important;
-    background-size: 24px auto!important;
+    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/arrow-up2@2x.png') !important;
+    background-position: right center !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px auto !important;
 }
-#Impress{
-    color:#4a90e2!important;
+
+.______btccom______ #Impress {
+    color: #4a90e2 !important;
 }
-.typeinfo{
+
+.______btccom______ .typeinfo {
     display: block;
     /*width:75px;*/
     height: 100%;
-    border:solid 0px red;
+    border: solid 0px red;
 }
-.typename{
+
+.______btccom______ .typename {
     display: block;
     float: left;
     height: 100%;
-    line-height:30px;
-    border:solid 0px red;
+    line-height: 30px;
+    border: solid 0px red;
 }
-.sanjiao{
+
+.______btccom______ .sanjiao {
     float: left;
     display: block;
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/icon-right@2x.png')!important;
-    background-position: right top 10px!important;
-    background-repeat: no-repeat!important;
-    background-size: 10px auto!important;
-    height: 100%!important;
-    width: 10px!important;
-    border:solid 0px red!important;
-    line-height:30px!important;
-    margin-left: 5px!important;
+    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/icon-right@2x.png') !important;
+    background-position: right top 10px !important;
+    background-repeat: no-repeat !important;
+    background-size: 10px auto !important;
+    height: 100% !important;
+    width: 10px !important;
+    border: solid 0px red !important;
+    line-height: 30px !important;
+    margin-left: 5px !important;
 }
-#P_title{
-    overflow: hidden!important;
-    margin: 0!important;
-    padding:0px!important;
-    clear:both!important;
-    width:100%!important;
-    height:28px!important;
-    background-color:#FFFFFF!important;
+
+.______btccom______ #P_title {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0px !important;
+    clear: both !important;
+    width: 100% !important;
+    height: 28px !important;
+    background-color: #FFFFFF !important;
     /*cursor:move!important;*/
 }
-.errortype{
- border:0px!important;
+
+.______btccom______ .errortype {
+    border: 0px !important;
 }
-#P_title div:first-child{
-    margin: 0!important;
-    padding:0px!important;
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
-    float: left!important;
-    text-align: left!important;
-    width:50%!important;
-    height: 100%!important;
-    line-height: 28px!important;
-    font-weight:normal!important;
-    color:#4a90e2!important;
+
+.______btccom______ #P_title div:first-child {
+    margin: 0 !important;
+    padding: 0px !important;
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
+    float: left !important;
+    text-align: left !important;
+    width: 50% !important;
+    height: 100% !important;
+    line-height: 28px !important;
+    font-weight: normal !important;
+    color: #4a90e2 !important;
     font-size: 12px;
-    padding-left: 15px!important;
+    padding-left: 15px !important;
 }
-#P_title div:last-child{
-    margin: 0px!important;
-    padding:0px!important;
-    float:right!important;
-    width:26px!important;
-    height: 100%!important;
-    text-align: right!important;
-    border:solid 0px red;
-    margin-right: 8px!important;
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/icon-close@2x.png')!important;
-    background-position: right 5px center!important;
-    background-repeat: no-repeat!important;
-    background-size: 11px auto!important;
-    cursor: pointer!important;
+
+.______btccom______ #P_title div:last-child {
+    margin: 0px !important;
+    padding: 0px !important;
+    float: right !important;
+    width: 26px !important;
+    height: 100% !important;
+    text-align: right !important;
+    border: solid 0px red;
+    margin-right: 8px !important;
+    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/icon-close@2x.png') !important;
+    background-position: right 5px center !important;
+    background-repeat: no-repeat !important;
+    background-size: 11px auto !important;
+    cursor: pointer !important;
 }
-#content_data{
-    padding:0px!important;
-    margin:0px!important;
-    clear:both!important;
-    margin-top: 0px!important;
-    min-width: 300px!important;
-    min-height: 82px!important;
-    overflow: hidden!important;
-    border:solid 0px red;
-    margin-right: 15px!important;
-    margin-left: 15px!important;
-    background-color:#FFFFFF!important;
+
+.______btccom______ #content_data {
+    padding: 0px !important;
+    margin: 0px !important;
+    clear: both !important;
+    margin-top: 0px !important;
+    min-width: 300px !important;
+    min-height: 82px !important;
+    overflow: hidden !important;
+    border: solid 0px red;
+    margin-right: 15px !important;
+    margin-left: 15px !important;
+    background-color: #FFFFFF !important;
 
 }
-#loading{
-    position:absolute;
-    padding:0px!important;
-    margin-top:33px!important;
-    clear:both!important;
-    border:solid 0px red!important;
-    opacity:0.5!important;
-    font-size:16px!important;
-    color:#888888!important;
-    width:150px!important;
-    height: 20px!important;
-    line-height:22px!important;
-    margin-left: 106px!important;
+
+.______btccom______ #loading {
+    position: absolute;
+    padding: 0px !important;
+    margin-top: 33px !important;
+    clear: both !important;
+    border: solid 0px red !important;
+    opacity: 0.5 !important;
+    font-size: 16px !important;
+    color: #888888 !important;
+    width: 150px !important;
+    height: 20px !important;
+    line-height: 22px !important;
+    margin-left: 106px !important;
     display: none;
 }
-.load_point{
-    float:left;
-    width:50px!important;
-    height:20px!important;
-    border:solid 0px red!important;
-    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/loading.gif')!important;
-    background-position: left top 9px!important;
-    background-repeat: no-repeat!important;
-    background-size: 18px auto!important;
-}
-.datainfo{
-    width:100%!important;
-    border:0px !important;
-    margin:0px!important;
 
-}
-.datainfo tbody {
-    width:100%!important;
-    border:0px !important;
-}
-.datainfo tr{
-    padding:0px!important;
-    clear:both!important;
-    border: 0px!important;
-}
-.datainfo tr td{
-    clear:both!important;
-    height: auto!important;
-    width: auto!important;
-    padding:0px!important;
-    font-size:12px!important;
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
-    border:solid 0px red!important;
-    white-space:nowrap!important;
-    color:#888888;
+.______btccom______ .load_point {
+    float: left;
+    width: 50px !important;
+    height: 20px !important;
+    border: solid 0px red !important;
+    background-image: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/loading.gif') !important;
+    background-position: left top 9px !important;
+    background-repeat: no-repeat !important;
+    background-size: 18px auto !important;
 }
 
-.td1{
-    clear:both;
-    width:auto!important;
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
-    text-align: left!important;
-    height: 20px!important;
-    line-height: 20px!important;
-    color:#888888!important;
-    font-weight:normal!important;
+.______btccom______ .datainfo {
+    width: 100% !important;
+    border: 0px !important;
+    margin: 0px !important;
+
 }
-.td2{
-    clear:both;
-    width:auto!important;
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
-    text-align:right!important;
-    height:20px!important;
-    line-height:20px!important;
-    color:#262626!important;
-    font-weight: normal!important;
+
+.______btccom______ .datainfo > tbody {
+    width: 100% !important;
+    border: 0px !important;
 }
-.error_info{
+
+.______btccom______ .datainfo > tr {
+    padding: 0px !important;
+    clear: both !important;
+    border: 0px !important;
+}
+
+.______btccom______ .datainfo > tr > td {
+    clear: both !important;
+    height: auto !important;
+    width: auto !important;
+    padding: 0px !important;
+    font-size: 12px !important;
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
+    border: solid 0px red !important;
+    white-space: nowrap !important;
+    color: #888888;
+}
+
+.______btccom______ .td1 {
+    clear: both;
+    width: auto !important;
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
+    text-align: left !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    color: #888888 !important;
+    font-weight: normal !important;
+}
+
+.______btccom______ .td2 {
+    clear: both;
+    width: auto !important;
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
+    text-align: right !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    color: #262626 !important;
+    font-weight: normal !important;
+}
+
+.______btccom______ .error_info {
     padding-top: 20px;
-    border:solid 0px red!important;
-    width:100%!important;
-    font-size:12px!important;;
-    height:100%!important;
-    line-height:18px!important;
-    text-align:center!important;
-    font-family:"Microsoft YaHei","PingFangSC-Regular"!important;
-    color: #262626!important;
-    text-align: center!important;
+    border: solid 0px red !important;
+    width: 100% !important;
+    font-size: 12px !important;;
+    height: 100% !important;
+    line-height: 18px !important;
+    text-align: center !important;
+    font-family: "Microsoft YaHei", "PingFangSC-Regular" !important;
+    color: #262626 !important;
+    text-align: center !important;
 }
-.oDivline{
-    border-bottom: solid 1px #E6E9EE!important;
-    margin-top: 7px!important;
-    margin-right: 15px!important;
-    margin-left: 15px!important;
+
+.______btccom______ .oDivline {
+    border-bottom: solid 1px #E6E9EE !important;
+    margin-top: 7px !important;
+    margin-right: 15px !important;
+    margin-left: 15px !important;
 }
-.topline{
-    border-top: solid 1px #E6E9EE!important;
-    margin-top: 0px!important;
+
+.______btccom______ .topline {
+    border-top: solid 1px #E6E9EE !important;
+    margin-top: 0px !important;
     margin-bottom: 4px;
-    margin-right: 15px!important;
-    margin-left: 15px!important;
+    margin-right: 15px !important;
+    margin-left: 15px !important;
 }
-.btc_logo{
-    display: block;
+
+.______btccom______ .btc-speed-up{
+    height:27px;
     border:solid 0px red;
-    height: 26px;
-    width:100%;
-    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/logo@2x.png') no-repeat center 8px !important;
-    background-size: 63px auto!important;
+    float: right;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/icon_time@2x.png') no-repeat left 60% !important;
+    background-size: auto 25px !important;
+    color: #D0011B;
+    padding-left: 35px;
 }
-.unconfirm{
+.______btccom______ .btc-speed-up>span{
+    display: block;
+    float: right;
+    height: 25px;
+    line-height: 25px;
+}
+.______btccom______ .btc-speed-btn{
+    display: block;
+    width:70px;
+    margin-right: 15px;
+    font-size: 12px;
+    padding: 0 3px;
+    color: #fff;
+    background-color: #D0011B;
+    border-radius: 2px;
+    text-align: center;
+    letter-spacing: .8px;
+    cursor: pointer;
+}
+.______btccom______ .btc_logo {
+    display: block;
+    border: solid 0px red;
+    height: 30px;
+    width: 100%;
+    background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/logo.svg') no-repeat center 60% !important;
+    background-size: auto 15px !important;
+}
+
+.______btccom______ .unconfirm {
     background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/unconfirmed-cn@2x.png') no-repeat center center !important;
-    background-size: 125px auto!important;
+    background-size: 125px auto !important;
 }
-.unconfirm_en{
+
+.______btccom______ .unconfirm_en {
     background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/unconfirmed@2x.png') no-repeat center center !important;
-    background-size: 125px auto!important;
+    background-size: 125px auto !important;
 }
-.coinbase{
+
+.______btccom______ .coinbase {
     background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/coinbase-cn@2x.png') no-repeat center center !important;
-    background-size: 131px auto!important;
+    background-size: 131px auto !important;
 }
-.coinbase_en{
+
+.______btccom______ .coinbase_en {
     background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/coinbase@2x.png') no-repeat center center !important;
-    background-size: 131px auto!important;
+    background-size: 131px auto !important;
 }
-.Orphaned{
+
+.______btccom______ .Orphaned {
     background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/orphan-block-cn@2x.png') no-repeat center center !important;
-    background-size: 50px auto!important;
+    background-size: 50px auto !important;
 }
-.Orphaned_en{
+
+.______btccom______ >.Orphaned_en {
     background: url('chrome-extension://__MSG_@@extension_id__/components/lookup/images/orphan-block@2x.png') no-repeat center center !important;
-    background-size: 50px auto!important;
+    background-size: 50px auto !important;
 }
