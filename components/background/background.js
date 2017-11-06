@@ -65,6 +65,11 @@ storage.get('markets').then(items => {
             data,
             updatedAt: moment().unix()
         });
+        for (let key in markets.data){
+            if(!markets.data[key]){
+                delete markets.data[key]
+            }
+        }
         storage.set({markets});
     });
 });

@@ -43,7 +43,7 @@
                         <th class="text-right" data-i18n="popup_markets_low"></th>
                         <th class="text-right" data-i18n="popup_markets_vol"></th>
                     </tr>
-                    <tr v-for="s in symbols" track-by="symbol">
+                    <tr v-for="s in symbols" track-by="symbol" v-if="markets.data[s.symbol]">
                         <td class="text-right">{{ s | exchangeName }}</td>
                         <td class="text-right price-indicator-td">
                             <price-indicator :v="markets.data[s.symbol].last" :rates="rates" :symbol="s" :options="options"></price-indicator>

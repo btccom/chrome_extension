@@ -33,7 +33,7 @@ module.exports = {
         'zh_cn': _.merge({}, defaultConfig, {
             price: {
                 badge: {
-                    source: 'huobibtccny'
+                    source: 'coinbasebtcusd'
                 },
                 changeColor: constants.RED_UP_GREEN_DOWN,
                 preferCurrency: constants.CNY
