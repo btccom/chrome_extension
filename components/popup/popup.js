@@ -42,9 +42,9 @@ const priceIndicator = {
     <i class="glyphicon glyphicon-arrow-up" v-show="change > 0"></i>
     <i class="glyphicon glyphicon-arrow-right" v-show="change == 0"></i>
     <i class="glyphicon glyphicon-arrow-down" v-show="change < 0"></i>
-    {{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(v / 1e3, symbol.currency_type, options.price.preferCurrency) | numberFormat 2 }}
+    {{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(v, symbol.currency_type, options.price.preferCurrency) | numberFormat 2 }}
     /
-    {{ options.price.preferCurrency == 'USD' ? '¥' : '$' }} {{ convert(v / 1e3, symbol.currency_type, options.price.preferCurrency == 'USD' ? 'CNY' : 'USD') | numberFormat 2 }}
+    {{ options.price.preferCurrency == 'USD' ? '¥' : '$' }} {{ convert(v, symbol.currency_type, options.price.preferCurrency == 'USD' ? 'CNY' : 'USD') | numberFormat 2 }}
 </div>
 `,
     methods: {
@@ -98,9 +98,14 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             submitURL: `https://chain.btc.com/${utils.getLocale().replace('_', '-')}/search`
         },
+        computed:{
+            coinSymbols(){
+                return this.symbols.filter(s=>s.coin_type==this.options.price.coin);
+            }
+        },
         filters: {
             exchangeName(symbol) {
-                return symbol[`platform_${utils.getLocale()}`];
+                return  symbol.display_name;;
             }
         },
         components: {

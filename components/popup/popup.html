@@ -34,6 +34,22 @@
                 <a href="https://chain.btc.com/en/applications/extension" target="_blank" data-i18n="popup_update_notification"></a>
             </div>
 
+
+            <div class="setting-group">
+                <div class="setting-row">
+                    <label>
+                        <input type="radio" name="priceCoin" value="BTC" v-model="options.price.coin">
+                        <span>&nbsp;BTC</span>
+                    </label>
+                </div>
+                <div class="setting-row">
+                    <label>
+                        <input type="radio" name="priceCoin" value="BCH" v-model="options.price.coin">
+                        <span>&nbsp;BCH</span>
+                    </label>
+                </div>
+            </div>
+
             <div class="markets">
                 <table class="markets-table">
                     <tr>
@@ -43,14 +59,14 @@
                         <th class="text-right" data-i18n="popup_markets_low"></th>
                         <th class="text-right" data-i18n="popup_markets_vol"></th>
                     </tr>
-                    <tr v-for="s in symbols" track-by="symbol" v-if="markets.data[s.symbol]">
+                    <tr v-for="s in coinSymbols" track-by="symbol">
                         <td class="text-right">{{ s | exchangeName }}</td>
                         <td class="text-right price-indicator-td">
                             <price-indicator :v="markets.data[s.symbol].last" :rates="rates" :symbol="s" :options="options"></price-indicator>
                         </td>
-                        <td class="text-right">{{ markets.data[s.symbol].high / 1e3 | numberFormat 2}}</td>
-                        <td class="text-right">{{ markets.data[s.symbol].low / 1e3 | numberFormat 2}}</td>
-                        <td class="text-right">{{ markets.data[s.symbol].vol / 1e8 | numberFormat 0 }}</td>
+                        <td class="text-right">{{ markets.data[s.symbol].high | numberFormat 2}}</td>
+                        <td class="text-right">{{ markets.data[s.symbol].low | numberFormat 2}}</td>
+                        <td class="text-right">{{ markets.data[s.symbol].volume | numberFormat 0 }}</td>
                     </tr>
                 </table>
                 <div class="text-right markets-lastupdate"><span data-i18n="popup_last_update"></span> {{ markets.updatedAt | timestampFormat }}</div>

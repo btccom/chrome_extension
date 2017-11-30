@@ -48,36 +48,21 @@ storage.get('markets').then(items => {
         };
     }
 
-    socket.on('snapshot', function (data) {
-        //console.log('websocket snapshot', data);
-
-        markets = {
-            data,
-            updatedAt: moment().unix()
-        };
-        storage.set({markets});
-    });
-
     socket.on('last', function (data) {
-        //console.log('websocket last', data);
+        console.log('websocket last', data);
 
         _.merge(markets, {
             data,
             updatedAt: moment().unix()
         });
-        for (let key in markets.data){
-            if(!markets.data[key]){
-                delete markets.data[key]
-            }
-        }
         storage.set({markets});
     });
 });
 
 chrome.storage.onChanged.addListener(changes => {
-    if (changes.markets) {
-        storage.getOptions()
-            .then(opt => {
+    if (changes.markets || changes.options) {
+        Promise.join(storage.getOptions(), storage.getMarkets())
+            .then(([opt, markets]) => {
                 if (!opt.price.badge.enable) {
                     chrome.browserAction.setBadgeText({
                         text: ''
@@ -85,7 +70,13 @@ chrome.storage.onChanged.addListener(changes => {
                     return;
                 }
 
-                const info = changes.markets.newValue.data[opt.price.badge.source];
+                var info;
+                if (changes.markets) {
+                    info = changes.markets.newValue.data[opt.price.badge.source];
+                }
+                else {
+                    info = markets.data[opt.price.badge.source];
+                }
                 if (!info) return;
 
                 const last = info.last;
@@ -97,12 +88,12 @@ chrome.storage.onChanged.addListener(changes => {
                             rates,
                             _.find(symbols, e => e.symbol == opt.price.badge.source).currency_type,
                             opt.price.preferCurrency,
-                            last / 1e3
+                            last
                         );
                     })
                     .then(convertedLast => {
                         // 设置角标
-                        let lastPrice= Math.floor(convertedLast).toFixed(0);
+                        let lastPrice = Math.floor(convertedLast).toFixed(0);
                         const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
                         const lengthLimit = isMac ? 3 : 4;
                         const overflow = lastPrice.length > lengthLimit;

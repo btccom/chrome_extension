@@ -20,9 +20,12 @@ const defaultConfig = {
 module.exports = {
     autoUpdateEndpoint: 'http://s.btc.com/chrome-ext/LATEST',
     blockAPIEndpoint: 'https://api.chain.btc.com/v1',
-    marketsAPIEndpoint: 'https://price.api.btc.com/v1',
-    websocketEndpoint: 'https://price.api.btc.com',
+    ratesAPIEndpoint: 'https://price.api.btc.com/v1',
+    // websocketEndpoint: 'https://price.api.btc.com',
     websocketPath: '/v1/socket.io',
+
+    marketsAPIEndpoint: 'http://localhost:3000/v1',
+    websocketEndpoint: 'http://localhost:3000/',
 
     colors: {
         RED: [241, 79, 90, 255],
@@ -30,10 +33,12 @@ module.exports = {
         GRAY: [77, 77, 77, 255]
     },
     defaultConfig: {
+        'exchanges': ['bitstampbtcusd','bitfinexbtcusd','bittrexbtcusd','bitfinexbtcusd','krakenbtcusd','gdaxbtcusd','poloniexbchusd','krakenbchusd'],
         'zh_cn': _.merge({}, defaultConfig, {
             price: {
+                coin:'BTC',
                 badge: {
-                    source: 'coinbasebtcusd'
+                    source: 'bitstampbtcusd'
                 },
                 changeColor: constants.RED_UP_GREEN_DOWN,
                 preferCurrency: constants.CNY
@@ -41,8 +46,9 @@ module.exports = {
         }),
         'en': _.merge({}, defaultConfig, {
             price: {
+                coin:'BTC',
                 badge: {
-                    source: 'coinbasebtcusd'
+                    source: 'bitstampbtcusd'
                 },
                 changeColor: constants.RED_DOWN_GREEN_UP,
                 preferCurrency: constants.USD

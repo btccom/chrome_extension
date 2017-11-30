@@ -20,6 +20,9 @@
   "setting_section_currency": {
     "message": "货币"
   },
+  "setting_section_coin": {
+    "message": "币种"
+  },
   "setting_section_currency_prefer_usd": {
     "message": "优先使用美元"
   },

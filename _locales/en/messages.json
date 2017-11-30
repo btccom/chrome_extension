@@ -20,6 +20,9 @@
   "setting_section_currency": {
     "message": "Currency"
   },
+  "setting_section_coin": {
+    "message": "Coin"
+  },
   "setting_section_currency_prefer_usd": {
     "message": "USD"
   },
