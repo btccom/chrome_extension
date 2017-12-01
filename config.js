@@ -22,10 +22,10 @@ module.exports = {
     blockAPIEndpoint: 'https://api.chain.btc.com/v1',
     ratesAPIEndpoint: 'https://price.api.btc.com/v1',
     // websocketEndpoint: 'https://price.api.btc.com',
-    websocketPath: '/v1/socket.io',
+    websocketPath: '/v3/socket.io',
 
-    marketsAPIEndpoint: 'http://localhost:3000/v1',
-    websocketEndpoint: 'http://localhost:3000/',
+    marketsAPIEndpoint: 'http://price.api.btc.com/v3',
+    websocketEndpoint: 'http://price.api.btc.com/',
 
     colors: {
         RED: [241, 79, 90, 255],
@@ -33,7 +33,6 @@ module.exports = {
         GRAY: [77, 77, 77, 255]
     },
     defaultConfig: {
-        'exchanges': ['bitstampbtcusd','bitfinexbtcusd','bittrexbtcusd','bitfinexbtcusd','krakenbtcusd','gdaxbtcusd','poloniexbchusd','krakenbchusd'],
         'zh_cn': _.merge({}, defaultConfig, {
             price: {
                 coin:'BTC',

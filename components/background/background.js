@@ -48,6 +48,17 @@ storage.get('markets').then(items => {
         };
     }
 
+    socket.on('snapshot', function (data) {
+        console.log('snapshot last', data);
+        markets = {
+            data,
+            updatedAt: moment().unix()
+        };
+        storage.set({markets});
+    });
+
+
+
     socket.on('last', function (data) {
         console.log('websocket last', data);
 
@@ -72,7 +83,18 @@ chrome.storage.onChanged.addListener(changes => {
 
                 var info;
                 if (changes.markets) {
-                    info = changes.markets.newValue.data[opt.price.badge.source];
+                    if(_.has(changes.markets.newValue.data,opt.price.badge.source)){
+                        info = changes.markets.newValue.data[opt.price.badge.source];
+                    }else{
+
+                        //bch 默认 krakenbtcusd, btc 的交易所列表没有时默认第一个
+                        opt.price.badge.source= opt.price.coin=='BCH' ? 'krakenbtcusd' : Object.keys(changes.markets.newValue.data)[0];
+                        info = changes.markets.newValue.data[opt.price.badge.source];
+                        storage.set({
+                            options: opt
+                        });
+                    }
+
                 }
                 else {
                     info = markets.data[opt.price.badge.source];
@@ -80,7 +102,7 @@ chrome.storage.onChanged.addListener(changes => {
                 if (!info) return;
 
                 const last = info.last;
-                const open = info.open;
+                const open = info.open ? info.open : 0;
 
                 return storage.getSymbolAndRates()
                     .then(({symbols, rates}) => {

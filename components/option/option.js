@@ -28,11 +28,19 @@ window.addEventListener('DOMContentLoaded', () => {
                     submit(){
                         let items=[];
                         this.coinSymbols.map(s=>items.push(s.symbol));
-                        items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=this.coinSymbols[0].symbol : null;
+                        items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=items[0] : null;
                         return storage.set({
                             options: this.options
                         });
                     }
+                },
+                ready() {
+                    let items=[];
+                    this.coinSymbols.map(s=>items.push(s.symbol));
+                    items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=items[0] : null;
+                    return storage.set({
+                        options: this.options
+                    });
                 }
             });
         });
