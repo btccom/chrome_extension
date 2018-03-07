@@ -9,9 +9,7 @@ const utils = require('../../lib/utils');
 const config = require('../../config');
 
 // 使用 websocket 连接
-const socket = io(config.websocketEndpoint, {
-    path: config.websocketPath
-});
+const socket = new io(config.websocketEndpoint);
 
 // 连接失败
 socket.on('connect_error', e => {
@@ -38,6 +36,8 @@ socket.on('reconnect_failed', () => {
     console.error('reconnect_failed');
 });
 
+
+var index=0;
 storage.get('markets').then(items => {
     let markets = items.markets;
 
@@ -48,24 +48,56 @@ storage.get('markets').then(items => {
         };
     }
 
-    socket.on('snapshot', function (data) {
-        console.log('snapshot last', data);
-        markets = {
-            data,
-            updatedAt: moment().unix()
-        };
-        storage.set({markets});
-    });
+    socket.on('all_symbol_tick', function (data) {
 
+        // 每6000秒 刷新本地缓存数据
+        index++;
+        if(index==1 || index==4000){
+            markets={}
+        }
 
+        let last_data = {}; //最新数据
 
-    socket.on('last', function (data) {
-        console.log('websocket last', data);
+        Object.keys(data).forEach(key => {
+
+            let coin_list = {};
+
+            Object.values(data[key]).forEach(info => {
+                if (info && info.status == 1) {  //正常状态的数据
+
+                    info.cointype == 'bcc' ? info.cointype = 'bch' : null;  //bcc 统一成bch
+                    let currency = info.symbol.split('_')[1];
+                    info['currency'] = currency == 'usdt' ? 'USD' : currency.toUpperCase();
+
+                    delete info['market_code'];
+                    delete info['timestamp'];
+                    delete info['httptime'];
+                    delete info['message'];
+                    delete info['buy'];
+                    delete info['sell'];
+
+                    //增量更新
+                    if (markets.data) {
+                        if (!_.isEqual(markets.data[key.toUpperCase()][info.market], info)) {
+                            coin_list[info.market] = info;
+                        }
+                    } else {
+                        coin_list[info.market] = info;
+                    }
+
+                }
+            });
+
+            last_data[key.toUpperCase()] = coin_list;
+        })
+
+        console.log('websocket tick', last_data);
 
         _.merge(markets, {
-            data,
+            data: last_data,
             updatedAt: moment().unix()
         });
+
         storage.set({markets});
     });
 });
@@ -81,15 +113,15 @@ chrome.storage.onChanged.addListener(changes => {
                     return;
                 }
 
-                var info;
+                var select_coin_exchange = {}; //角标选中的交易所币种
                 if (changes.markets) {
-                    if(_.has(changes.markets.newValue.data,opt.price.badge.source)){
-                        info = changes.markets.newValue.data[opt.price.badge.source];
-                    }else{
+                    if (_.has(changes.markets.newValue.data[opt.price.coin], opt.price.badge.source)) {
+                        select_coin_exchange = changes.markets.newValue.data[opt.price.coin][opt.price.badge.source];
+                    } else {
 
-                        //bch 默认 krakenbtcusd, btc 的交易所列表没有时默认第一个
-                        opt.price.badge.source= opt.price.coin=='BCH' ? 'krakenbtcusd' : Object.keys(changes.markets.newValue.data)[0];
-                        info = changes.markets.newValue.data[opt.price.badge.source];
+                        //没找到交易所列表没有时默认第一个
+                        opt.price.badge.source = Object.keys(changes.markets.newValue.data[opt.price.coin])[0];
+                        select_coin_exchange = changes.markets.newValue.data[opt.price.coin][opt.price.badge.source];
                         storage.set({
                             options: opt
                         });
@@ -97,18 +129,24 @@ chrome.storage.onChanged.addListener(changes => {
 
                 }
                 else {
-                    info = markets.data[opt.price.badge.source];
+                    select_coin_exchange = markets.data[opt.price.coin][opt.price.badge.source];
                 }
-                if (!info) return;
+                if (!select_coin_exchange && !changes.markets) return;
 
-                const last = info.last;
-                const open = info.open ? info.open : 0;
+                var last = select_coin_exchange.last;
+                var open=0;
+                if(_.has(changes,'markets')){
+                     open = changes.markets.oldValue.data[opt.price.coin][opt.price.badge.source].last;
+                }else{
+                     open = markets.data[opt.price.coin][opt.price.badge.source].last;
+                }
+
 
                 return storage.getSymbolAndRates()
                     .then(({symbols, rates}) => {
                         return utils.convertCurrency(
                             rates,
-                            _.find(symbols, e => e.symbol == opt.price.badge.source).currency_type,
+                            select_coin_exchange.currency,
                             opt.price.preferCurrency,
                             last
                         );

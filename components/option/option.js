@@ -6,41 +6,38 @@ const utils = require('../../lib/utils');
 const storage = require('../../lib/storage');
 
 window.addEventListener('DOMContentLoaded', () => {
-    Promise.join(storage.getOptions(), storage.getSymbolAndRates())
-        .then(([options, { symbols }]) => {
+    Promise.join(storage.getMarkets(), storage.getOptions(), storage.getSymbolAndRates())
+        .then(([markets, options, {symbols}]) => {
             new Vue({
                 el: '.settings',
                 data: {
+                    markets,
                     options,
                     symbols
                 },
-                computed:{
-                   coinSymbols(){
-                       return this.symbols.filter(s=>s.coin_type==this.options.price.coin);
-                   }
-                },
-                filters: {
-                    exchangeName(symbol) {
-                        return symbol.display_name;
-                    }
+                computed: {
+                    coins: function () {
+                        var arr = Object.keys(this.markets.data);
+                        return _.concat(['BTC', 'BCH'], _.difference(arr, ['BTC', 'BCH']));
+                    },
                 },
                 methods: {
                     submit(){
-                        let items=[];
-                        this.coinSymbols.map(s=>items.push(s.symbol));
-                        items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=items[0] : null;
+                        if(!_.has(markets.data[options.price.coin],options.price.badge.source)){
+                            options.price.badge.source=Object.keys(markets.data[options.price.coin])[0]
+                        }
                         return storage.set({
                             options: this.options
                         });
                     }
                 },
                 ready() {
-                    let items=[];
-                    this.coinSymbols.map(s=>items.push(s.symbol));
-                    items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=items[0] : null;
-                    return storage.set({
-                        options: this.options
-                    });
+                     if(!_.has(markets.data[options.price.coin],options.price.badge.source)){
+                         options.price.badge.source=Object.keys(markets.data[options.price.coin])[0]
+                         return storage.set({
+                             options: this.options
+                         });
+                     }
                 }
             });
         });

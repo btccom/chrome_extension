@@ -27,11 +27,27 @@ Vue.filter('timestampFormat', (v, format = 'YYYY/MM/DD HH:mm:ss') => {
     return moment(v * 1000).format(format);
 });
 
+Vue.filter('sortName', (v, opt) => {
+    if (opt) {
+        var data = v[opt];
+        var sort_data = {};
+        if (data && data.binance) {
+            sort_data['binance'] = data.binance;
+            Object.keys(data).map(key => {
+                if (key != 'binance') {
+                    sort_data[key] = data[key];
+                }
+            })
+            return sort_data;
+        }
+
+        return data;
+    }
+});
+
 const priceIndicator = {
     props: ['v', 'rates', 'symbol', 'options'],
-    filters: {
-
-    },
+    filters: {},
     data() {
         return {
             change: 0
@@ -42,14 +58,15 @@ const priceIndicator = {
     <i class="glyphicon glyphicon-arrow-up" v-show="change > 0"></i>
     <i class="glyphicon glyphicon-arrow-right" v-show="change == 0"></i>
     <i class="glyphicon glyphicon-arrow-down" v-show="change < 0"></i>
-    {{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(v, symbol.currency_type, options.price.preferCurrency) | numberFormat 2 }}
-    /
-    {{ options.price.preferCurrency == 'USD' ? '¥' : '$' }} {{ convert(v, symbol.currency_type, options.price.preferCurrency == 'USD' ? 'CNY' : 'USD') | numberFormat 2 }}
+    {{ options.price.preferCurrency == 'USD' ? '¥' : '$' }} {{ convert(v, symbol.currency, options.price.preferCurrency == 'USD' ? 'CNY' : 'USD') | numberFormat 2 }}
+     /
+    {{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(v, symbol.currency, options.price.preferCurrency) | numberFormat 2 }}
 </div>
 `,
     methods: {
         convert(value, fromSymbol, toSymbol){
-            return this.rates[toSymbol] / this.rates[fromSymbol] * value;
+            if (fromSymbol.toUpperCase() == toSymbol.toUpperCase()) return value;
+            return value * (this.rates[`${fromSymbol.toUpperCase()}2${toSymbol.toUpperCase()}`])
         }
     },
     ready(){
@@ -91,25 +108,34 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             symbols: [],
             rates: {},
-            options: {},
+            options: {price: {}},
             needUpdate: false,
             latestVersion: {
                 version: ''
             },
             submitURL: `https://chain.btc.com/${utils.getLocale().replace('_', '-')}/search`
         },
-        computed:{
-            coinSymbols(){
-                return this.symbols.filter(s=>s.coin_type==this.options.price.coin);
-            }
+
+        computed: {
+            coins: function () {
+                var arr = Object.keys(this.markets.data);
+                return _.concat(['BTC', 'BCH'], _.difference(arr, ['BTC', 'BCH'])).reverse();
+            },
         },
+
         filters: {
             exchangeName(symbol) {
-                return  symbol.display_name;;
+                return symbol.display_name;
             }
         },
         components: {
             priceIndicator
+        },
+        methods: {
+            convert(value, fromSymbol, toSymbol){
+                if (fromSymbol.toUpperCase() == toSymbol.toUpperCase()) return value;
+                return value * (this.rates[`${fromSymbol.toUpperCase()}2${toSymbol.toUpperCase()}`])
+            }
         },
         ready() {
             chrome.storage.onChanged.addListener(changes => {
@@ -119,15 +145,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            storage.latestVersion().then(latestVersion => {
-                this.latestVersion = latestVersion;
-                const localVersion = chrome.runtime.getManifest().version;
-                // console.log('localVersion = %s, latestVeresion = %s', localVersion, latestVersion.version);
-                this.needUpdate = localVersion !== latestVersion.version;
-            });
-
             return Promise.join(storage.getMarkets(), storage.getSymbolAndRates(), storage.getOptions())
-                .then(([ markets, { symbols, rates }, options ]) => {
+                .then(([markets, {symbols, rates}, options]) => {
                     this.markets = markets;
                     this.symbols = symbols;
                     this.rates = rates;

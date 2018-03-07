@@ -30,19 +30,14 @@
                     <div class="help-text" data-i18n="setting_section_query_dropdown_enable_helptext"></div>
                 </div>
             </div>
+
             <div class="setting-section">
                 <h2 data-i18n="setting_section_coin"></h2>
                 <div class="setting-group">
-                    <div class="setting-row">
+                    <div class="setting-row" v-for="key in coins">
                         <label>
-                            <input type="radio" name="priceCoin" value="BTC" v-model="options.price.coin">
-                            <span>BTC</span>
-                        </label>
-                    </div>
-                    <div class="setting-row">
-                        <label>
-                            <input type="radio" name="priceCoin" value="BCH" v-model="options.price.coin">
-                            <span>BCH</span>
+                            <input type="radio" name="priceCoin" :value="key" v-model="options.price.coin">
+                            <span>&nbsp;{{key}}</span>
                         </label>
                     </div>
                 </div>
@@ -91,8 +86,8 @@
                     </label>
                     <select v-if="options.price.badge.enable" v-model="options.price.badge.source"
                             style="margin-left: 10px;">
-                        <option :value="s.symbol" v-for="s in coinSymbols" track-by="symbol">
-                            {{ s | exchangeName }}
+                        <option :value="s.market" v-for="s in markets.data[options.price.coin]" track-by="market">
+                            {{ symbols[s.market].display_name }}
                         </option>
                     </select>
                     <div class="help-text" data-i18n="setting_section_price_browserbadge_enable_helptext"></div>
