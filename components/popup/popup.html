@@ -17,12 +17,14 @@
 <div class="main-body">
     <div class="container" v-cloak>
         <div class="row">
+
             <div class="search">
                 <form method="GET" :action="submitURL" class="search-form" target="_blank">
                     <div class="search-input-wrapper">
+                        <div class="search-coin"></div>
                         <input class="search-input" type="search" name="q"
                                data-i18n="popup_search_placeholder" data-i18n-attribute="placeholder"
-                               autofocus autocomplete="off" spellcheck="false" >
+                               autofocus autocomplete="off" spellcheck="false">
                     </div>
                     <div class="search-button-wrapper">
                         <button type="submit" class="search-button"><i class="glyphicon glyphicon-search"></i></button>
@@ -30,8 +32,13 @@
                 </form>
             </div>
 
-            <div class="update-notification text-info bg-info" v-show="needUpdate">
-                <a href="https://chain.btc.com/en/applications/extension" target="_blank" data-i18n="popup_update_notification"></a>
+            <div class="setting-group">
+                <div class="setting-row" v-for="key in coins">
+                    <label>
+                        <input type="radio" name="priceCoin" :value="key" v-model="options.price.coin">
+                        <span>&nbsp;{{key}}</span>
+                    </label>
+                </div>
             </div>
 
             <div class="markets">
@@ -43,24 +50,31 @@
                         <th class="text-right" data-i18n="popup_markets_low"></th>
                         <th class="text-right" data-i18n="popup_markets_vol"></th>
                     </tr>
-                    <tr v-for="s in symbols" track-by="symbol">
-                        <td class="text-right">{{ s | exchangeName }}</td>
-                        <td class="text-right price-indicator-td">
-                            <price-indicator :v="markets.data[s.symbol].last" :rates="rates" :symbol="s" :options="options"></price-indicator>
+                    <template v-for="s in markets.data| sortName options.price.coin">
+                    <tr>
+                        <td class="text-right">
+                            <a :href="symbols[s.market].url">{{ symbols[s.market].display_name }}</a>
                         </td>
-                        <td class="text-right">{{ markets.data[s.symbol].high / 1e3 | numberFormat 2}}</td>
-                        <td class="text-right">{{ markets.data[s.symbol].low / 1e3 | numberFormat 2}}</td>
-                        <td class="text-right">{{ markets.data[s.symbol].vol / 1e8 | numberFormat 0 }}</td>
+                        <td class="text-right price-indicator-td">
+                            <price-indicator :v="s.last" :rates="rates" :symbol="s" :options="options"></price-indicator>
+                        </td>
+                        <td class="text-right">{{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(s.high, s.currency, options.price.preferCurrency) | numberFormat 2}}</td>
+                        <td class="text-right">{{ options.price.preferCurrency == 'USD' ? '$' : '¥' }} {{ convert(s.low, s.currency, options.price.preferCurrency) | numberFormat 2}}</td>
+                        <td class="text-right">{{ s.vol | numberFormat 0 }}</td>
                     </tr>
+                    </template>
                 </table>
-                <div class="text-right markets-lastupdate"><span data-i18n="popup_last_update"></span> {{ markets.updatedAt | timestampFormat }}</div>
+                <div class="text-right markets-lastupdate"><span data-i18n="popup_last_update"></span> {{
+                    markets.updatedAt | timestampFormat }}
+                </div>
             </div>
 
             <footer class="footer">
                 <a href="https://chain.btc.com" target="_blank" style="vertical-align: top; display: inline-block;">
                     <i class="icon-btc-logo"></i>
                 </a>
-                <a href="/components/option/option.html" target="_btccomblank" class="option" data-i18n="popup_settings"></a>
+                <a href="/components/option/option.html" target="_btccomblank" class="option"
+                   data-i18n="popup_settings"></a>
             </footer>
         </div>
     </div>
