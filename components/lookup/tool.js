@@ -40,7 +40,7 @@ function dicbook(field){
         "size": "Size",
         "txcount": "Tx Count",
         "time": "Time",
-        "Relayed": "Relaye By",
+        "Relayed": "Relayed By",
         "Balance": "Balance",
         "total_received": "Total Received",
         "fee":"Fee",
@@ -111,7 +111,7 @@ function looktype(){
    }
         if(type=="block"){element = {"btc_height": "", "btc_confirm": "", "btc_time": "", "btc_size": "", "btc_txcount": "", "btc_Relayed": ""};}
         if(type=="address"){element = {"btc_Balance": "", "btc_total_received": "", "btc_txcount": "","btc_past_month_tx_count": "","btc_first_tx_timestamp": "","btc_Impress":""};}
-        if(type=="tx"){element = {"btc_timestamp":"","btc_confirm":"","btc_fee":"","btc_height":""};}
+        if(type=="tx"){element = {"btc_timestamp":"","btc_confirm":"","btc_size":"","btc_fee":"","btc_height":""};}
 
    return true;
 }

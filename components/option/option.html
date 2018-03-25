@@ -13,70 +13,93 @@
     <script src="../../build/option.bundle.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="page-header">
-                <h1 data-i18n="setting_title"></h1>
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1 data-i18n="setting_title"></h1>
+        </div>
+
+        <form class="settings" @change="submit" v-cloak>
+            <div class="setting-section">
+                <h2 data-i18n="setting_section_query"></h2>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" v-model="options.query.dropdown.enable">
+                        <span data-i18n="setting_section_query_dropdown_enable"></span>
+                    </label>
+                    <div class="help-text" data-i18n="setting_section_query_dropdown_enable_helptext"></div>
+                </div>
+            </div>
+            <div class="setting-section">
+                <h2 data-i18n="setting_section_coin"></h2>
+                <div class="setting-group">
+                    <div class="setting-row">
+                        <label>
+                            <input type="radio" name="priceCoin" value="BTC" v-model="options.price.coin">
+                            <span>BTC</span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <label>
+                            <input type="radio" name="priceCoin" value="BCH" v-model="options.price.coin">
+                            <span>BCH</span>
+                        </label>
+                    </div>
+                </div>
             </div>
 
-            <form class="settings" @change="submit" v-cloak>
-                <div class="setting-section">
-                    <h2 data-i18n="setting_section_query"></h2>
-                    <div class="setting-group">
+            <div class="setting-section">
+                <h2 data-i18n="setting_section_currency"></h2>
+                <div class="setting-group">
+                    <div class="setting-row">
                         <label>
-                            <input type="checkbox" v-model="options.query.dropdown.enable">
-                            <span data-i18n="setting_section_query_dropdown_enable"></span>
+                            <input type="radio" name="priceCurrency" value="USD" v-model="options.price.preferCurrency">
+                            <span data-i18n="setting_section_currency_prefer_usd"></span>
                         </label>
-                        <div class="help-text" data-i18n="setting_section_query_dropdown_enable_helptext"></div>
+                    </div>
+                    <div class="setting-row">
+                        <label>
+                            <input type="radio" name="priceCurrency" value="CNY" v-model="options.price.preferCurrency">
+                            <span data-i18n="setting_section_currency_prefer_cny"></span>
+                        </label>
                     </div>
                 </div>
-                <div class="setting-section">
-                    <h2 data-i18n="setting_section_currency"></h2>
-                    <div class="setting-group">
-                        <div class="setting-row">
-                            <label>
-                                <input type="radio" name="priceCurrency" value="USD" v-model="options.price.preferCurrency">
-                                <span data-i18n="setting_section_currency_prefer_usd"></span>
-                            </label>
-                        </div>
-                        <div class="setting-row">
-                            <label>
-                                <input type="radio" name="priceCurrency" value="CNY" v-model="options.price.preferCurrency">
-                                <span data-i18n="setting_section_currency_prefer_cny"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-                <div class="setting-section">
-                    <h2 data-i18n="setting_section_price"></h2>
-                    <div class="setting-group">
-                        <div class="setting-row">
-                            <label>
-                                <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN" v-model="options.price.changeColor">
-                                <span data-i18n="setting_section_price_RED_UP_GREEN_DOWN"></span>
-                            </label>
-                        </div>
-                        <div class="setting-row">
-                            <label>
-                                <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP" v-model="options.price.changeColor">
-                                <span data-i18n="setting_section_price_RED_DOWN_GREEN_UP"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="setting-group">
+            <div class="setting-section">
+                <h2 data-i18n="setting_section_price"></h2>
+                <div class="setting-group">
+                    <div class="setting-row">
                         <label>
-                            <input type="checkbox" class="settings-checkbox" v-model="options.price.badge.enable">
-                            <span data-i18n="setting_section_price_browserbadge_enable"></span>
+                            <input type="radio" name="priceChangeColor" value="RED_UP_GREEN_DOWN"
+                                   v-model="options.price.changeColor">
+                            <span data-i18n="setting_section_price_RED_UP_GREEN_DOWN"></span>
                         </label>
-                        <select v-if="options.price.badge.enable" v-model="options.price.badge.source" style="margin-left: 10px;">
-                            <option :value="s.symbol" v-for="s in symbols" track-by="symbol">{{ s | exchangeName }}</option>
-                        </select>
-                        <div class="help-text" data-i18n="setting_section_price_browserbadge_enable_helptext"></div>
+                    </div>
+                    <div class="setting-row">
+                        <label>
+                            <input type="radio" name="priceChangeColor" value="RED_DOWN_GREEN_UP"
+                                   v-model="options.price.changeColor">
+                            <span data-i18n="setting_section_price_RED_DOWN_GREEN_UP"></span>
+                        </label>
                     </div>
                 </div>
-            </form>
-        </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" class="settings-checkbox" v-model="options.price.badge.enable">
+                        <span data-i18n="setting_section_price_browserbadge_enable"></span>
+                    </label>
+                    <select v-if="options.price.badge.enable" v-model="options.price.badge.source"
+                            style="margin-left: 10px;">
+                        <option :value="s.symbol" v-for="s in coinSymbols" track-by="symbol">
+                            {{ s | exchangeName }}
+                        </option>
+                    </select>
+                    <div class="help-text" data-i18n="setting_section_price_browserbadge_enable_helptext"></div>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
 </body>
 </html>

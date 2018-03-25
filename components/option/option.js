@@ -14,17 +14,33 @@ window.addEventListener('DOMContentLoaded', () => {
                     options,
                     symbols
                 },
+                computed:{
+                   coinSymbols(){
+                       return this.symbols.filter(s=>s.coin_type==this.options.price.coin);
+                   }
+                },
                 filters: {
                     exchangeName(symbol) {
-                        return symbol[`platform_${utils.getLocale()}`];
+                        return symbol.display_name;
                     }
                 },
                 methods: {
                     submit(){
+                        let items=[];
+                        this.coinSymbols.map(s=>items.push(s.symbol));
+                        items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=items[0] : null;
                         return storage.set({
                             options: this.options
                         });
                     }
+                },
+                ready() {
+                    let items=[];
+                    this.coinSymbols.map(s=>items.push(s.symbol));
+                    items.indexOf(this.options.price.badge.source)<0 ? this.options.price.badge.source=items[0] : null;
+                    return storage.set({
+                        options: this.options
+                    });
                 }
             });
         });

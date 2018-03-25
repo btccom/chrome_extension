@@ -3,8 +3,8 @@
   "name": "__MSG_ext_name__",
   "description": "__MSG_ext_desc__",
   "default_locale": "en",
-  "author": "BTC.COM",
-  "version": "1.1.1",
+  "author": "BTC.com",
+  "version": "1.1.6",
   "browser_action": {
     "default_popup": "components/popup/popup.html",
     "default_icon": {
