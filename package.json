@@ -33,7 +33,7 @@
     "jquery": "^2.2.0",
     "lodash": "^3.10.1",
     "moment": "^2.11.1",
-    "socket.io": "^1.4.4",
+    "socket.io": "^2.4.0",
     "superagent": "^1.6.1",
     "superagent-bluebird-promise": "^3.0.0",
     "tether-drop": "^1.4.2",
